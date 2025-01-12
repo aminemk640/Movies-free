@@ -368,9 +368,9 @@ h1 {
                 
                 
     <div class="topnav-right">
-     <a id="search-icon"  tabindex="1" href="javascript:void(0)" >
-        <svg id="search-icon"enable-background="new 0 0 32 32" width="25" height="25" viewBox="0 0 32 32">
-            <path fill="#fff" stroke-width="4" d="M27.414,24.586l-5.077-5.077C23.386,17.928,24,16.035,24,14c0-5.514-4.486-10-10-10S4,8.486,4,14  s4.486,10,10,10c2.035,0,3.928-0.614,5.509-1.663l5.077,5.077c0.78,0.781,2.048,0.781,2.828,0  C28.195,26.633,28.195,25.367,27.414,24.586z M7,14c0-3.86,3.14-7,7-7s7,3.14,7,7s-3.14,7-7,7S7,17.86,7,14z"></path>
+    <a id="search-icon" tabindex="1" href="javascript:void(0)">
+        <svg id="search-icon" enable-background="new 0 0 32 32" width="25" height="25" viewBox="0 0 32 32">
+            <path fill="#fff" stroke-width="4" d="M27.414,24.586l-5.077-5.077C23.386,17.928,24,16.035,24,14c0-5.514-4.486-10-10-10S4,8.486,4,14s4.486,10,10,10c2.035,0,3.928-0.614,5.509-1.663l5.077,5.077c0.78,0.781,2.048,0.781,2.828,0C28.195,26.633,28.195,25.367,27.414,24.586z M7,14c0-3.86,3.14-7,7-7s7,3.14,7,7s-3.14,7-7,7S7,17.86,7,14z"></path>
         </svg>
     </a>
     </div></div>              
@@ -382,22 +382,14 @@ h1 {
 <div id="page">
 
 <!--+++++++++++++++++-->
-<div align="center" id="searchbar-container">
-    <input id="searchbar" 
-           type="text" 
-           name="search" 
-           placeholder="ابحث عن الحلقه او الرقم..." 
-           tabindex="1">
-      <svg id="close-icon" 
-         class="hidden"  
-         tabindex="0" 
-         onclick="toggleSearchBar()" 
-         xmlns="http://www.w3.org/2000/svg" 
-         viewBox="0 0 512 512" 
-         width="25" 
-         height="25">
-        <path fill="#000" d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM175 175c9.4-9.4 24.6-9.4 33.9 0l47 47 47-47c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9l-47 47 47 47c9.4 9.4 9.4 24.6 0 33.9s-24.6 9.4-33.9 0l-47-47-47 47c-9.4 9.4-24.6 9.4-33.9 0s-9.4-24.6 0-33.9l47-47-47-47c-9.4-9.4-9.4-24.6 0-33.9z"></path>
-    </svg>
+<div align="center">
+    <div class="container">
+        <div id="page">
+            <div align="center" id="searchbar-container">
+                <input id="searchbar" type="text" name="search" placeholder="ابحث عن الحلقه او الرقم..." tabindex="1">
+                <svg id="close-icon" class="hidden" tabindex="0" onclick="toggleSearchBar()" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="25" height="25">
+                    <path fill="#000" d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM175 175c9.4-9.4 24.6-9.4 33.9 0l47 47 47-47c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9l-47 47 47 47c9.4 9.4 9.4 24.6 0 33.9s-24.6 9.4-33.9 0l-47-47-47 47c-9.4 9.4-24.6 9.4-33.9 0s-9.4-24.6 0-33.9l47-47-47-47c-9.4-9.4-9.4-24.6 0-33.9z"></path>
+                </svg>
 </div>
 
 <p id="no-results-message" style="display: none; color: red;">لا توجد نتائج مطابقة</p>
@@ -1005,12 +997,57 @@ dGl2ZS5Db25hbi5TMjVFMTEyNi5tcDQ/cmxrZXk9N2UzNnVxNjZkNzlpcTFyMjJ1Z3N6NXZ4aSZz
 dD1jbmFxYnh1OSZkbD0x#Intent;scheme=xmtv;package=co.wuffy.player;end')"tabindex="4">3</div>
     </div>
 </button>
+<!--+++++++++++++++++-->                   
+ <button class="button" tabindex="1">
+    <img src="logo/01.jpg" alt="app tv" onerror="handleImageError(this)">
+    <div class="mov-name">
+<div class="tv-name-inner">episode 1127</div>
+    </div>
+    <div class="link">سيرفرات المشاهدة</div>
+    <div class="number-container">
+        <div 
+        class="number" 
+        data-link="intent://aHR0cHM6Ly9kbC5kcm9wYm94LmNvbS9zY2wvZmkvdWs1OHphMWZ3eDFwZ21yYTJrdzQ4L0RldGVj
+dGl2ZS5Db25hbi5TMjVFMTEyNy5tcDQ/cmxrZXk9YWhzZWhkdDlmNGVoMDhiemVwYzl4ZWlndiZz
+dD1uMWRvdzVsOSZkbD0x#Intent;scheme=xmtv;package=co.wuffy.player;end"onclick="playStream(this)"tabindex="2">1</div>
+
+<div class="number"onclick="openServer('intent://aHR0cHM6Ly9kbC5kcm9wYm94LmNvbS9zY2wvZmkvdWs1OHphMWZ3eDFwZ21yYTJrdzQ4L0RldGVj
+dGl2ZS5Db25hbi5TMjVFMTEyNy5tcDQ/cmxrZXk9YWhzZWhkdDlmNGVoMDhiemVwYzl4ZWlndiZz
+dD1uMWRvdzVsOSZkbD0x#Intent;scheme=xmtv;package=co.wuffy.player;end')"tabindex="3">2</div>
+
+<div class="number"  onclick="openServer('intent://aHR0cHM6Ly9kbC5kcm9wYm94LmNvbS9zY2wvZmkvdWs1OHphMWZ3eDFwZ21yYTJrdzQ4L0RldGVj
+dGl2ZS5Db25hbi5TMjVFMTEyNy5tcDQ/cmxrZXk9YWhzZWhkdDlmNGVoMDhiemVwYzl4ZWlndiZz
+dD1uMWRvdzVsOSZkbD0x#Intent;scheme=xmtv;package=co.wuffy.player;end')"tabindex="4">3</div>
+    </div>
+</button>
+<!--+++++++++++++++++-->                   
+ <button class="button" tabindex="1">
+    <img src="logo/01.jpg" alt="app tv" onerror="handleImageError(this)">
+    <div class="mov-name">
+<div class="tv-name-inner">episode 1128</div>
+    </div>
+    <div class="link">سيرفرات المشاهدة</div>
+    <div class="number-container">
+        <div 
+        class="number" 
+        data-link="intent://aHR0cHM6Ly9kbC5kcm9wYm94LmNvbS9zY2wvZmkvcXJ1NXNkd3lmNTE1N2EyZjkwcnMxL0RldGVj
+dGl2ZS5Db25hbi5TMjVFMTEyOC5tcDQ/cmxrZXk9N3B4cXM3YXduMmJscThpdzI2MDFzcW1zbyZz
+dD04cG1zNzZjeiZkbD0x#Intent;scheme=xmtv;package=co.wuffy.player;end"onclick="playStream(this)"tabindex="2">1</div>
+
+<div class="number"onclick="openServer('intent://aHR0cHM6Ly9kbC5kcm9wYm94LmNvbS9zY2wvZmkvcXJ1NXNkd3lmNTE1N2EyZjkwcnMxL0RldGVj
+dGl2ZS5Db25hbi5TMjVFMTEyOC5tcDQ/cmxrZXk9N3B4cXM3YXduMmJscThpdzI2MDFzcW1zbyZz
+dD04cG1zNzZjeiZkbD0x#Intent;scheme=xmtv;package=co.wuffy.player;end')"tabindex="3">2</div>
+
+<div class="number"  onclick="openServer('intent://aHR0cHM6Ly9kbC5kcm9wYm94LmNvbS9zY2wvZmkvcXJ1NXNkd3lmNTE1N2EyZjkwcnMxL0RldGVj
+dGl2ZS5Db25hbi5TMjVFMTEyOC5tcDQ/cmxrZXk9N3B4cXM3YXduMmJscThpdzI2MDFzcW1zbyZz
+dD04cG1zNzZjeiZkbD0x#Intent;scheme=xmtv;package=co.wuffy.player;end')"tabindex="4">3</div>
+    </div>
+</button>
 
 
 
 
-<script> 
-    
+<script>
 let currentFocusIndex = -1; // لتتبع العنصر الحالي
 let buttons = Array.from(document.querySelectorAll('.button')); // جميع الأزرار
 let searchbar = document.getElementById('searchbar');
@@ -1081,10 +1118,8 @@ document.addEventListener('keydown', function(event) {
             currentFocusIndex--;
             focusButton(currentFocusIndex);
         }
-    } else if (event.key === 'Backspace') {
-        if (searchbar.classList.contains('show')) {
-            closeSearchBar();
-        }
+    } else if (event.key === 'Escape') {
+        closeSearchBar(); // استخدم Escape لإغلاق شريط البحث
     }
 });
 
@@ -1099,50 +1134,9 @@ function focusButton(index) {
 searchIcon.addEventListener('click', toggleSearchBar);
 closeIcon.addEventListener('click', closeSearchBar);
 searchbar.addEventListener('input', searchAnimal);
-
 </script>
 
-<script> 
 
-
-// Open server link
-function openServer(link) {
-    if (link.startsWith('intent://')) {
-        window.open(link); // فتح باستخدام تطبيقات مثل XMTV
-    } else {
-        window.open(link, '_blank'); // فتح الرابط في نافذة جديدة
-    }
-}
-
-// Handle keyboard navigation
-document.addEventListener('keydown', function (event) {
-    let focusedElement = document.activeElement;
-
-    // Navigate using arrow keys
-    if (event.key === 'ArrowDown') {
-        moveFocus(focusedElement, 'next');
-    } else if (event.key === 'ArrowUp') {
-        moveFocus(focusedElement, 'previous');
-    } else if (event.key === 'Enter') {
-        // Trigger click on focused element
-        if (focusedElement.classList.contains('number')) {
-            focusedElement.click();
-        }
-    }
-});
-
-function moveFocus(element, direction) {
-    let focusableElements = Array.from(document.querySelectorAll('[tabindex]'))
-        .filter(el => !el.classList.contains('hidden')); // فقط العناصر الظاهرة
-    let currentIndex = focusableElements.indexOf(element);
-
-    if (direction === 'next' && currentIndex < focusableElements.length - 1) {
-        focusableElements[currentIndex + 1].focus();
-    } else if (direction === 'previous' && currentIndex > 0) {
-        focusableElements[currentIndex - 1].focus();
-    }
-}
-</script> 
   </div> </div></div>
         </div>
     </div>
