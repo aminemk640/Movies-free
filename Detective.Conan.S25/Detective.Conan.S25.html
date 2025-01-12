@@ -1,0 +1,1152 @@
+<!DOCTYPE html>
+<html lang="AR" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conan.S25</title>
+  <link href="logo/00.png" rel="icon" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <!-- إضافة jQuery --><script src="watched-icon-V2.js"></script> 
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>     <!-- إضافة watched-icon -->
+      
+  
+<body>
+
+    <!----------  اكواد استايل القائمة  ------------>
+    <style>
+         body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+   z-index: 999; /* لضمان ظهوره فوق المحتوى */
+        }
+
+        .topnav {
+          position: fixed;
+overflow: hidden;
+border-radius:4px;
+   background-image: linear-gradient(132deg, #3c4a71 0%, #339a8a 100%);
+z-index: 999; /* لضمان ظهوره فوق المحتوى */
+top: 0;
+height: 54px;
+width: 100%;
+box-shadow: 5px 5px 7px #fff;
+z-index: 1;
+}  
+
+        .topnav a {
+            float: left;
+            color: #ffffff;
+            text-align: center;
+            padding: 14px 14px;
+            text-decoration: none;
+            font-size: 20px;
+        }
+       .topnav a:focus,.topnav a:hover {
+     background: #ccc;
+    color: #000;
+    border-radius: 5px;
+    outline: none;
+    border: 2px solid #ff0066;
+    transition-delay: 0s, 1s;
+    box-shadow: 0 0 10px #ff0066, 0 0 20px #ff0066, 0 0 40px #ff0066, 0 0 80px #ff0066, 0 0 160px #ff0066;
+        }
+        
+        .topnav a:focus svg path,
+.topnav a:hover svg path {
+  fill: #000; /* تغيير لون الملء للمسار إلى الأسود */
+  outline: none; /* إزالة تأثير التركيز الافتراضي */
+  border-radius: 8px;
+  border: 2px solid #ff0066;
+}
+        .topnav-centered a {
+
+            float: none;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .topnav-right {
+            float: right;
+        }
+
+        /* Responsive navigation menu (for mobile devices) */
+        @media screen and (max-width: 100%) {
+            .topnav a,
+            .topnav-right {
+                float: none;
+                display: block;
+            }
+
+            .topnav-centered a {
+                position: relative;
+                top: 0;
+                left: 0;
+                transform: none;
+                color: #ffff;
+            }
+        }
+    </style>
+    <head>
+
+        <body>
+
+    
+
+            <!-- lçaima l3lwia and-->
+            
+            <html>
+<head>
+    
+    <style>
+   body {
+                height: 100%;
+                margin: auto;
+                position: relative;
+          background:#339a8a;
+             background-position: center;
+                align-items: center;
+                justify-content: center;
+           
+            }
+
+           .button {
+            position: relative; /* Ensure the icon is positioned relative to the button */
+                align:center;
+                display: inline-block; /* لجعل الزر عنصراً مستطيل الشكل */
+            padding:2px; /* تعيين الهامش الداخلي للزر */
+            border-radius: 8px; /* تدوير الزوايا لتصميم أفضل */
+            width: 155px;
+            height: 215px;
+                margin: 6px;
+              border-color: #000;
+                 background: #3c4a71; 
+            }
+
+ 
+
+          button img {
+         width: 100%; /* تحكم في عرض الصورة */
+    height: 105px; /* احتفاظ بالتناسب أثناء تغيير الحجم */
+    margin: -1px auto; /* تحكم في التباعد بين الصورة والعناصر الأخرى */
+    display: block; /* جعل الصورة تظهر بشكل مستقل */
+    border-radius: 4px; /* تحديد إطار بسمك 2 بكسل ولون أزرق */
+
+}
+ .number:focus,.number:hover {
+    background: #ccc;
+    color: #000;
+    border-radius: 8px;
+    outline: none;
+    border: 2px solid #ff0066;
+    transform: scale(1.5);
+    transition-delay: 0s, 1s;
+    box-shadow: 0 0 10px #ff0066, 0 0 20px #ff0066, 0 0 40px #ff0066, 0 0 80px #ff0066, 0 0 160px #ff0066, 0 0 320px #ff0066;
+        }
+  
+          
+
+            /* ازالة تغيير شكل السكرول بار Scroll.Bar */
+            ::-webkit-scrollbar {
+                width: 8px;
+                height: 105px;
+               overflow-x: hidden; 
+                /**  تغير  لون القائمة **/
+            }
+
+            ::-webkit-scrollbar-thumb {
+                -webkit-shadow: inset 0 0 0 #000000;
+                -webkit-border-radius: 0;
+                background-image: -webkit-linear-gradient(top, #111 100%, #000 100%);border-radius: 12px;
+            }
+
+            ::-webkit-scrollbar-track {
+                -webkit-shadow: inset 0 0 0 #000000;
+                -webkit-border-radius: 100px;
+            }
+.mov-name, .link {
+    padding: 2px;
+    text-align: center;
+    font-size: 16px;
+    color: #fff;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+    overflow: hidden;
+    border-radius: 8px;
+    border: 2px solid gold;
+    margin-top: 2px;
+    width: 140px;
+    height: 18px;
+}
+      .number-container {
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
+            margin-top: 5px;
+          
+        }
+
+        .number {
+        
+            width: 30px;
+            height: 30px;
+             background:#339a8a;
+            border-radius: 8px;
+             border:3px solid #333;
+            color: #FFF;
+         font-size: 12px;
+         font-weight: bold  ;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+    .icon {
+        
+            width: 20px;
+            height: 20px;
+             
+            border-radius: 8px;
+            
+            color: #FFF;
+        
+        }
+       a{
+color: black;
+text-decoration:none;
+}
+#al{
+color: yellow;
+text-decoration:none;
+
+}
+                #page {
+            margin-top: 60px;
+            width: 100%;
+        }
+        
+                
+/* تظهر الأيقونة أعلى الزجاجية */
+        .watched-icon {
+            position: absolute; 
+            background: #fff;
+            border-radius: 4px;
+            border: 2px solid #ff0066;
+            box-shadow: 0 0 10px #FFD700, 0 0 20px #FFD700, 0 0 40px #FFD700;
+            top: 0;
+            left: 0;
+            width: 20px;
+            height: 20px;
+            display: none; /* Initially hide the watched icon */
+        }
+h1 {
+    position: relative;
+    align:center;
+    width: 90%;
+    height: 36px;
+    background: #3c4a71;
+    border-color: #fff;
+    border-radius: 8px; /* تدوير الزوايا لتصميم أفضل */
+    padding:5px; /* تعيين الهامش الداخلي للزر */
+	text-align: center;
+	margin-top:2px;
+	font-size: 20px;
+	color:#fff;
+	font-family: "Airarabia", Sans-serif;
+	font-weight: bold;
+	}
+    
+  .h1:focus,.h1:hover {
+   background: gold; /* لون	 خلفية الزر */
+         color: #000 ;
+          border-radius: 8px;
+          outline: none; /* إزالة تأثير الـ focus الافتراضي */
+             border: 2px solid #ff0066;
+           
+	}  
+#searchbar-container {
+    position: relative;
+    width: 70%;
+    margin: 10px auto;
+    direction: rtl;
+
+}
+ #searchbar:focus,#searchbar:hover {
+       background: #ccc;
+    color: #000;
+    border-radius: 5px;
+    outline: none;
+    border: 2px solid #ff0066;
+    transition-delay: 0s, 1s;
+    box-shadow: 0 0 10px #ff0066, 0 0 20px #ff0066;
+    }
+#searchbar {
+    width: 100%;
+    padding: 10px;margin-top:10px;
+    font-size: 19px;
+    font-weight: bold;
+    border-radius: 5px;
+    height: 35px;
+    border: 2px solid gold;
+    box-sizing: border-box;
+    display: none; /* Initially hide the search bar */
+}
+
+#searchbar.show {
+    display: inline-block;
+}
+
+#close-icon {
+    position: absolute;
+    top: 60%;
+    left: 10px;
+    transform: translateY(-50%);
+    cursor: pointer;
+    font-size: 20px;
+    color: grey;
+    display: none; /* Initially hide the close icon */
+}
+
+#close-icon.show {
+    display: block;
+}
+
+#close-icon:hover, #close-icon:focus {
+    color: red;
+}
+
+.hidden {
+    display: none;
+}
+
+.show {
+    display: inline-block;
+}
+
+.focused {
+    outline: 2px solid #00f;
+    background-color: #eef;
+}
+
+       
+        .tv-name-inner {
+  display: inline-block;
+  padding-left: 0%;
+  animation: marquee 0s linear infinite;
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  50% { transform: translateX(-40%); }
+  100% { transform: translateX(0); }
+}
+                </style>
+                
+                
+          <!-- Top navigation -->
+            <div class="topnav">
+                <!-- ISIM TATBI9 -->
+                <div class="topnav-centered">
+                 <a><h5> كونان الموسم 25</h5> </a>
+                </div>
+                <!-- ISIM TATBI9 -->
+
+                <!-- ZIR ROJO3 -->
+                <a href="go:afmv ">
+                    <i  class="fa fa-reply "></i>
+                </a>
+                <!-- ZIR ROJO3 -->
+
+<a><i class="fa-solid fa-clapperboard"></i></a>
+                <!-- ZIR LBAHT-search -->
+                
+                
+    <div class="topnav-right">
+     <a id="search-icon"  tabindex="1" href="javascript:void(0)" >
+        <svg id="search-icon"enable-background="new 0 0 32 32" width="25" height="25" viewBox="0 0 32 32">
+            <path fill="#fff" stroke-width="4" d="M27.414,24.586l-5.077-5.077C23.386,17.928,24,16.035,24,14c0-5.514-4.486-10-10-10S4,8.486,4,14  s4.486,10,10,10c2.035,0,3.928-0.614,5.509-1.663l5.077,5.077c0.78,0.781,2.048,0.781,2.828,0  C28.195,26.633,28.195,25.367,27.414,24.586z M7,14c0-3.86,3.14-7,7-7s7,3.14,7,7s-3.14,7-7,7S7,17.86,7,14z"></path>
+        </svg>
+    </a>
+    </div></div>              
+              
+</head>
+<body>
+<div align="center" >
+<div class="container">
+<div id="page">
+
+<!--+++++++++++++++++-->
+<div align="center" id="searchbar-container">
+    <input id="searchbar" 
+           type="text" 
+           name="search" 
+           placeholder="ابحث عن الحلقه او الرقم..." 
+           tabindex="1">
+      <svg id="close-icon" 
+         class="hidden"  
+         tabindex="0" 
+         onclick="toggleSearchBar()" 
+         xmlns="http://www.w3.org/2000/svg" 
+         viewBox="0 0 512 512" 
+         width="25" 
+         height="25">
+        <path fill="#000" d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM175 175c9.4-9.4 24.6-9.4 33.9 0l47 47 47-47c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9l-47 47 47 47c9.4 9.4 9.4 24.6 0 33.9s-24.6 9.4-33.9 0l-47-47-47 47c-9.4 9.4-24.6 9.4-33.9 0s-9.4-24.6 0-33.9l47-47-47-47c-9.4-9.4-9.4-24.6 0-33.9z"></path>
+    </svg>
+</div>
+
+<p id="no-results-message" style="display: none; color: red;">لا توجد نتائج مطابقة</p>
+
+<div id="buttons-container">
+              <!--+++++++++++++++++-->
+    <div class="section" data-section="Conan-S025">
+                  <!--+++++++++++++++++-->
+         <script>          
+        const playStream = (element) => {
+    const streamLink = element.getAttribute("data-link");
+
+    // محاولة فتح التطبيق باستخدام intent
+    const iframe = document.createElement("iframe");
+    iframe.style.display = "none";
+    iframe.src = streamLink;
+    document.body.appendChild(iframe);
+
+    let playStoreRedirected = false;
+
+    setTimeout(() => {
+        document.body.removeChild(iframe);
+
+        if (document.visibilityState === "visible" && !playStoreRedirected) {
+            playStoreRedirected = true;
+            const packageName = "co.wuffy.player";
+            const playStoreIntent = `intent://details?id=${packageName}#Intent;scheme=market;package=com.android.vending;end`;
+            window.location.href = playStoreIntent;
+        }
+    }, 1000); // زمن الانتظار
+};
+          
+</script>                   
+<!--+++++++++++++++++-->                   
+ <button class="button" tabindex="1">
+    <img src="logo/01.jpg" alt="app tv" onerror="handleImageError(this)">
+    <div class="mov-name">
+        <div class="tv-name-inner">episode 1101</div>
+    </div>
+    <div class="link">سيرفرات المشاهدة</div>
+    <div class="number-container">
+        <div 
+        class="number" 
+        data-link="intent://aHR0cHM6Ly9kbC5kcm9wYm94LmNvbS9zY2wvZmkvdDMxbzF6cWtxdTVucWg5YXhlc3BtL2NvbmFuczI1LWVwMTEwMS50cz9ybGtleT05aXV3ajcyZTUzdXl3Y2V3b3J5cTh6bmltJnN0PWlhcW5hbTluJmRsPTA=#Intent;scheme=xmtv;package=co.wuffy.player;end"
+        onclick="playStream(this)"
+        tabindex="2">1
+    </div>
+        <div 
+            class="number" 
+            onclick="openServer('https://www.4shared.com/web/embed/file/PsqZpcHxku')"
+            tabindex="3">2</div>
+        <div 
+            class="number" 
+            onclick="openServer('https://www.4shared.com/web/embed/file/5XdIjVmMfa')"
+            tabindex="4">3</div>
+    </div>
+</button>
+
+<!--+++++++++++++++++-->                   
+ <button class="button" tabindex="1">
+    <img src="logo/01.jpg" alt="app tv" onerror="handleImageError(this)">
+    <div class="mov-name">
+<div class="tv-name-inner">episode 1102</div>
+    </div>
+    <div class="link">سيرفرات المشاهدة</div>
+    <div class="number-container">
+        <div 
+        class="number" 
+        data-link="intent://aHR0cHM6Ly9kbC5kcm9wYm94LmNvbS9zY2wvZmkvcHgycmU0azQ2ejduMTc2aGYwbWZ2L2NvbmFu
+czI1LWVwMTEwMi50cz9ybGtleT1wNW9pYXNpOXB0bWE2OTBzNjd2cmo4dWw5JnN0PWRqc2h2d2Nv
+JmRsPTA=#Intent;scheme=xmtv;package=co.wuffy.player;end "
+        onclick="playStream(this)"
+        tabindex="2">1
+    </div>
+        <div 
+            class="number" 
+            onclick="openServer('https://www.4shared.com/web/embed/file/b5DrBHOkfa')"
+            tabindex="3">2</div>
+        <div 
+            class="number" 
+            onclick="openServer('https://www.4shared.com/web/embed/file/xBBQ2WEbjq')"
+            tabindex="4">3</div>
+    </div>
+</button>
+
+<!--+++++++++++++++++-->                   
+ <button class="button" tabindex="1">
+    <img src="logo/01.jpg" alt="app tv" onerror="handleImageError(this)">
+    <div class="mov-name">
+<div class="tv-name-inner">episode 1103</div>
+    </div>
+    <div class="link">سيرفرات المشاهدة</div>
+    <div class="number-container">
+        <div 
+        class="number" 
+        data-link="intent://aHR0cHM6Ly9kbC5kcm9wYm94LmNvbS9zY2wvZmkvbHQ2bXk4MTVhbGN3eGVhMXZuNWxoL2NvbmFu
+czI1LWVwMTEwMy50cz9ybGtleT1wZXM3bDBlcHAwbGloZW1jdzJudXBjNTFzJnN0PWJ5cmtqOW9j
+JmRsPTA=#Intent;scheme=xmtv;package=co.wuffy.player;end"
+        onclick="playStream(this)"
+        tabindex="2">1
+    </div>
+        <div 
+            class="number" 
+            onclick="openServer('https://www.4shared.com/web/embed/file/jT1Yl7GMfa')"
+            tabindex="3">2</div>
+        <div 
+            class="number" 
+            onclick="openServer('https://www.4shared.com/web/embed/file/jT1Yl7GMfa')"
+            tabindex="4">3</div>
+    </div>
+</button>
+<!--+++++++++++++++++-->                   
+ <button class="button" tabindex="1">
+    <img src="logo/01.jpg" alt="app tv" onerror="handleImageError(this)">
+    <div class="mov-name">
+<div class="tv-name-inner">episode 1104</div>
+    </div>
+    <div class="link">سيرفرات المشاهدة</div>
+    <div class="number-container">
+        <div 
+        class="number" 
+        data-link="intent://aHR0cHM6Ly9kbC5kcm9wYm94LmNvbS9zY2wvZmkveDhhbTlrajhkNnhscms1OHJheDhsL2NvbmFu
+czI1LWVwMTEwNC50cz9ybGtleT1tdXl0OWJ1eHd4eGNraHJ2N3hhNW1pbGEwJnN0PTZucmxibDB2
+JmRsPTA=#Intent;scheme=xmtv;package=co.wuffy.player;end"
+        onclick="playStream(this)"
+        tabindex="2">1
+    </div>
+        <div 
+            class="number" 
+            onclick="openServer('https://www.4shared.com/web/embed/file/IFXu9zjtfa')"
+            tabindex="3">2</div>
+        <div 
+            class="number" 
+            onclick="openServer('https://www.4shared.com/web/embed/file/IFXu9zjtfa')"
+            tabindex="4">3</div>
+    </div>
+</button>
+<!--+++++++++++++++++-->                   
+ <button class="button" tabindex="1">
+    <img src="logo/01.jpg" alt="app tv" onerror="handleImageError(this)">
+    <div class="mov-name">
+<div class="tv-name-inner">episode 1105</div>
+    </div>
+    <div class="link">سيرفرات المشاهدة</div>
+    <div class="number-container">
+        <div 
+        class="number" 
+        data-link="intent://aHR0cHM6Ly9kbC5kcm9wYm94LmNvbS9zY2wvZmkvd3NxeWxqaDQxa2EwY2V5cDI1Zm1lLzExMDUu
+dHM/cmxrZXk9dnFoNXRmcWF3Znd5cWZ3OTF5bmozOW80dSZzdD1ieGZqeDN0cyZkbD0w#Intent;scheme=xmtv;package=co.wuffy.player;end "
+        onclick="playStream(this)"
+        tabindex="2">1
+    </div>
+        <div 
+            class="number" 
+            onclick="openServer('https://www.4shared.com/web/embed/file/GGyjOJ2Tjq')"
+            tabindex="3">2</div>
+        <div 
+            class="number" 
+            onclick="openServer('https://www.4shared.com/web/embed/file/GGyjOJ2Tjq')"
+            tabindex="4">3</div>
+    </div>
+</button>
+<!--+++++++++++++++++-->                   
+ <button class="button" tabindex="1">
+    <img src="logo/01.jpg" alt="app tv" onerror="handleImageError(this)">
+    <div class="mov-name">
+<div class="tv-name-inner">episode 1106</div>
+    </div>
+    <div class="link">سيرفرات المشاهدة</div>
+    <div class="number-container">
+        <div 
+        class="number" 
+        data-link="intent://aHR0cHM6Ly9kbC5kcm9wYm94LmNvbS9zY2wvZmkvcmhjaDcxdHIwd2VtOHhqODgwZHhqLzExMDYu
+dHM/cmxrZXk9Y3RyNHV3dnVydnhqcXJ5cmNuMmhsamF2ZiZzdD14ZXdudHo2cSZkbD0w#Intent;scheme=xmtv;package=co.wuffy.player;end"onclick="playStream(this)"tabindex="2">1</div>
+
+<div class="number"onclick="openServer('https://www.4shared.com/web/embed/file/Xh7DjOl2jq')"tabindex="3">2</div>
+
+<div class="number"  onclick="openServer('https://www.4shared.com/web/embed/file/Xh7DjOl2jq')"tabindex="4">3</div>
+    </div>
+</button>
+<!--+++++++++++++++++-->                   
+ <button class="button" tabindex="1">
+    <img src="logo/01.jpg" alt="app tv" onerror="handleImageError(this)">
+    <div class="mov-name">
+<div class="tv-name-inner">episode 1107</div>
+    </div>
+    <div class="link">سيرفرات المشاهدة</div>
+    <div class="number-container">
+        <div 
+        class="number" 
+        data-link="intent://aHR0cHM6Ly9kbC5kcm9wYm94LmNvbS9zY2wvZmkvMzJ4a2ZrdW83ZnlvbHU1bWdyaHNmLzExMDcu
+dHM/cmxrZXk9dzUxNzQ3OGxhY2RiMGQ3NDN5YXk5aGdmcyZzdD0zdzc0YjBieiZkbD0w#Intent;scheme=xmtv;package=co.wuffy.player;end"onclick="playStream(this)"tabindex="2">1</div>
+
+<div class="number"onclick="openServer('https://www.4shared.com/web/embed/file/Cs2p1kiHjq')"tabindex="3">2</div>
+
+<div class="number"  onclick="openServer('https://www.4shared.com/web/embed/file/Cs2p1kiHjq')"tabindex="4">3</div>
+    </div>
+</button>
+<!--+++++++++++++++++-->                   
+ <button class="button" tabindex="1">
+    <img src="logo/01.jpg" alt="app tv" onerror="handleImageError(this)">
+    <div class="mov-name">
+<div class="tv-name-inner">episode 1108</div>
+    </div>
+    <div class="link">سيرفرات المشاهدة</div>
+    <div class="number-container">
+        <div 
+        class="number" 
+        data-link="intent://aHR0cHM6Ly9kbC5kcm9wYm94LmNvbS9zY2wvZmkvaWJ5cHVkcXNsaXJ3b3l5YmNnbWNjLzExMDgu
+dHM/cmxrZXk9NndqdmJ0YzBpanczd3JlZmozcWR5NjA2biZzdD01MDk4ZnljYiZkbD0w#Intent;scheme=xmtv;package=co.wuffy.player;end"onclick="playStream(this)"tabindex="2">1</div>
+
+<div class="number"onclick="openServer('https://www.4shared.com/web/embed/file/zc6WPBaUge')"tabindex="3">2</div>
+
+<div class="number"  onclick="openServer('https://www.4shared.com/web/embed/file/zc6WPBaUge')"tabindex="4">3</div>
+    </div>
+</button>
+<!--+++++++++++++++++-->                   
+ <button class="button" tabindex="1">
+    <img src="logo/01.jpg" alt="app tv" onerror="handleImageError(this)">
+    <div class="mov-name">
+<div class="tv-name-inner">episode 1109</div>
+    </div>
+    <div class="link">سيرفرات المشاهدة</div>
+    <div class="number-container">
+        <div 
+        class="number" 
+        data-link="intent://aHR0cHM6Ly9kbC5kcm9wYm94LmNvbS9zY2wvZmkvdTVwc2FoZGhzZGNmZ2E3bnNieDB6LzExMDku
+dHM/cmxrZXk9eG9wM3d4Nzh3cWN3NHFmMWRibWg3aGs0NyZzdD03M2x3aHl3ZiZkbD0w#Intent;scheme=xmtv;package=co.wuffy.player;end"onclick="playStream(this)"tabindex="2">1</div>
+
+<div class="number"onclick="openServer('https://www.4shared.com/web/embed/file/rMABJSY5ku')"tabindex="3">2</div>
+
+<div class="number"  onclick="openServer('https://www.4shared.com/web/embed/file/rMABJSY5ku')"tabindex="4">3</div>
+    </div>
+</button>
+<!--+++++++++++++++++-->                   
+ <button class="button" tabindex="1">
+    <img src="logo/01.jpg" alt="app tv" onerror="handleImageError(this)">
+    <div class="mov-name">
+<div class="tv-name-inner">episode 1110</div>
+    </div>
+    <div class="link">سيرفرات المشاهدة</div>
+    <div class="number-container">
+        <div 
+        class="number" 
+        data-link="intent://aHR0cHM6Ly9kbC5kcm9wYm94LmNvbS9zY2wvZmkvYW81a3B4ZG05aDZqanFmeHFndzVzL2NvbmFu
+czI1LWVwMTExMC5tcDQ/cmxrZXk9MzQ2dW44cDZhMzZubzF1Y3IzM3VpaXdocyZzdD03cTJob2l3
+dCZkbD0w#Intent;scheme=xmtv;package=co.wuffy.player;end"onclick="playStream(this)"tabindex="2">1</div>
+
+<div class="number"onclick="openServer('https://www.4shared.com/web/embed/file/QZ1URF3Rjq')"tabindex="3">2</div>
+
+<div class="number"  onclick="openServer('https://www.4shared.com/web/embed/file/QZ1URF3Rjq')"tabindex="4">3</div>
+    </div>
+</button>
+<!--+++++++++++++++++-->                   
+ <button class="button" tabindex="1">
+    <img src="logo/01.jpg" alt="app tv" onerror="handleImageError(this)">
+    <div class="mov-name">
+<div class="tv-name-inner">episode 1111</div>
+    </div>
+    <div class="link">سيرفرات المشاهدة</div>
+    <div class="number-container">
+        <div 
+        class="number" 
+        data-link="intent://aHR0cHM6Ly9kbC5kcm9wYm94LmNvbS9zY2wvZmkveHQ1YjQxeTc2aXVlYnhlc2o2bWpyL2NvbmFu
+czI1LWVwMTExMS50cz9ybGtleT1va3Z1aHF3aDhvaHBrMHFsZmFoeDMzNDdvJnN0PTAwNjU2ZHlm
+JmRsPTA=#Intent;scheme=xmtv;package=co.wuffy.player;end"onclick="playStream(this)"tabindex="2">1</div>
+
+<div class="number"onclick="openServer('https://www.4shared.com/web/embed/file/b8Y7YUQDjq')"tabindex="3">2</div>
+
+<div class="number"  onclick="openServer('https://www.4shared.com/web/embed/file/b8Y7YUQDjq')"tabindex="4">3</div>
+    </div>
+</button>
+<!--+++++++++++++++++-->                   
+ <button class="button" tabindex="1">
+    <img src="logo/01.jpg" alt="app tv" onerror="handleImageError(this)">
+    <div class="mov-name">
+<div class="tv-name-inner">episode 1112</div>
+    </div>
+    <div class="link">سيرفرات المشاهدة</div>
+    <div class="number-container">
+        <div 
+        class="number" 
+        data-link="intent://aHR0cHM6Ly9kbC5kcm9wYm94LmNvbS9zY2wvZmkva2h2bHFqMTRzbzZsMHkyeWJ5eGM5L2NvbmFu
+czI1LWVwMTExMi5tcDQ/cmxrZXk9ajlkdHV2eXFkMmxtbjVvc3NnMmYwZ3FlcyZzdD15dGk0czAx
+bSZkbD0w#Intent;scheme=xmtv;package=co.wuffy.player;end"onclick="playStream(this)"tabindex="2">1</div>
+
+<div class="number"onclick="openServer('intent://aHR0cHM6Ly9kbC5kcm9wYm94LmNvbS9zY2wvZmkva2h2bHFqMTRzbzZsMHkyeWJ5eGM5L2NvbmFu
+czI1LWVwMTExMi5tcDQ/cmxrZXk9ajlkdHV2eXFkMmxtbjVvc3NnMmYwZ3FlcyZzdD15dGk0czAx
+bSZkbD0w#Intent;scheme=xmtv;package=co.wuffy.player;end')"tabindex="3">2</div>
+
+<div class="number"  onclick="openServer('https://www.4shared.com/web/embed/file/_BQrtiW1ge')"tabindex="4">3</div>
+    </div>
+</button>
+<!--+++++++++++++++++-->                   
+ <button class="button" tabindex="1">
+    <img src="logo/01.jpg" alt="app tv" onerror="handleImageError(this)">
+    <div class="mov-name">
+<div class="tv-name-inner">episode 1113</div>
+    </div>
+    <div class="link">سيرفرات المشاهدة</div>
+    <div class="number-container">
+        <div 
+        class="number" 
+        data-link="intent://aHR0cHM6Ly9kbC5kcm9wYm94LmNvbS9zY2wvZmkvOW1sNmhoN3VsM29leWplbWM1ZjRzL2NvbmFu
+czI1LWVwMTExMy50cz9ybGtleT03M3UxbDJwdGJ6cHJ6emJidzJlbzhmemFsJnN0PWJiY3N6ZDYx
+JmRsPTA=#Intent;scheme=xmtv;package=co.wuffy.player;end"onclick="playStream(this)"tabindex="2">1</div>
+
+<div class="number"onclick="openServer('intent://aHR0cHM6Ly9kbC5kcm9wYm94LmNvbS9zY2wvZmkvOW1sNmhoN3VsM29leWplbWM1ZjRzL2NvbmFu
+czI1LWVwMTExMy50cz9ybGtleT03M3UxbDJwdGJ6cHJ6emJidzJlbzhmemFsJnN0PWJiY3N6ZDYx
+JmRsPTA=#Intent;scheme=xmtv;package=co.wuffy.player;end')"tabindex="3">2</div>
+
+<div class="number"  onclick="openServer('https://www.4shared.com/web/embed/file/QZ1URF3Rjq')"tabindex="4">3</div>
+    </div>
+</button>
+<!--+++++++++++++++++-->                   
+ <button class="button" tabindex="1">
+    <img src="logo/01.jpg" alt="app tv" onerror="handleImageError(this)">
+    <div class="mov-name">
+<div class="tv-name-inner">episode 1114</div>
+    </div>
+    <div class="link">سيرفرات المشاهدة</div>
+    <div class="number-container">
+        <div 
+        class="number" 
+        data-link="intent://aHR0cHM6Ly9kbC5kcm9wYm94LmNvbS9zY2wvZmkvNXNra3A3d3JjanNkc2lnc3Q4N3BqL2NvbmFu
+czI1LWVwMTExNC50cz9ybGtleT04c29wbHBrOWliZHN4OWU4cXprMTU5dXR2JnN0PTNhbXd4ZXRy
+JmRsPTA=#Intent;scheme=xmtv;package=co.wuffy.player;end"onclick="playStream(this)"tabindex="2">1</div>
+
+<div class="number"onclick="openServer('https://www.4shared.com/web/embed/file/e7Uas0R1fa')"tabindex="3">2</div>
+
+<div class="number"  onclick="openServer('https://www.4shared.com/web/embed/file/e7Uas0R1fa')"tabindex="4">3</div>
+    </div>
+</button>
+<!--+++++++++++++++++-->                   
+ <button class="button" tabindex="1">
+    <img src="logo/01.jpg" alt="app tv" onerror="handleImageError(this)">
+    <div class="mov-name">
+<div class="tv-name-inner">episode 1115</div>
+    </div>
+    <div class="link">سيرفرات المشاهدة</div>
+    <div class="number-container">
+        <div 
+        class="number" 
+        data-link="intent://aHR0cHM6Ly9kbC5kcm9wYm94LmNvbS9zY2wvZmkvampjbThrMXJ6bGZsenIyZzEwZXltL2NvbmFu
+czI1LWVwMTExNS50cz9ybGtleT14MHl2cjNmbGVkc2F3M2UzOTRieXZsMHJwJnN0PWZ5a3J0N2Vo
+JmRsPTA=#Intent;scheme=xmtv;package=co.wuffy.player;end"onclick="playStream(this)"tabindex="2">1</div>
+
+<div class="number"onclick="openServer('https://www.4shared.com/web/embed/file/9YoxoCH0fa')"tabindex="3">2</div>
+
+<div class="number"  onclick="openServer('https://www.4shared.com/web/embed/file/9YoxoCH0fa')"tabindex="4">3</div>
+    </div>
+</button>
+<!--+++++++++++++++++-->                   
+ <button class="button" tabindex="1">
+    <img src="logo/01.jpg" alt="app tv" onerror="handleImageError(this)">
+    <div class="mov-name">
+<div class="tv-name-inner">episode 1116</div>
+    </div>
+    <div class="link">سيرفرات المشاهدة</div>
+    <div class="number-container">
+        <div 
+        class="number" 
+        data-link="intent://aHR0cHM6Ly9kbC5kcm9wYm94LmNvbS9zY2wvZmkvMjBpYWJmYXNneGV6Y3piZWxwaHBpL2NvbmFu
+czI1LWVwMTExNi50cz9ybGtleT1qNmU0d25vNW1qYzNxZzdqZnU5bGRpbmp4JnN0PWQ0azBuc3g4
+JmRsPTA=#Intent;scheme=xmtv;package=co.wuffy.player;end"onclick="playStream(this)"tabindex="2">1</div>
+
+<div class="number"onclick="openServer('https://www.4shared.com/web/embed/file/DOVcWXlnjq')"tabindex="3">2</div>
+
+<div class="number"  onclick="openServer('https://www.4shared.com/web/embed/file/DOVcWXlnjq')"tabindex="4">3</div>
+    </div>
+</button>
+<!--+++++++++++++++++-->                   
+ <button class="button" tabindex="1">
+    <img src="logo/01.jpg" alt="app tv" onerror="handleImageError(this)">
+    <div class="mov-name">
+<div class="tv-name-inner">episode 1117</div>
+    </div>
+    <div class="link">سيرفرات المشاهدة</div>
+    <div class="number-container">
+        <div 
+        class="number" 
+        data-link="intent://aHR0cHM6Ly9kbC5kcm9wYm94LmNvbS9zY2wvZmkvbTZxcmgxYTNlODdnbDkzNTI5dXdnL2NvbmFu
+czI1LWVwMTExNy50cz9ybGtleT1vbnpqanUwOXFqZnI3MTQxNHVyb2xrazF4JnN0PW5wMmMyc25p
+JmRsPTA=#Intent;scheme=xmtv;package=co.wuffy.player;end"onclick="playStream(this)"tabindex="2">1</div>
+
+<div class="number"onclick="openServer('https://www.4shared.com/web/embed/file/0bWz1Lrojq')"tabindex="3">2</div>
+
+<div class="number"  onclick="openServer('https://www.4shared.com/web/embed/file/0bWz1Lrojq')"tabindex="4">3</div>
+    </div>
+</button>
+<!--+++++++++++++++++-->                   
+ <button class="button" tabindex="1">
+    <img src="logo/01.jpg" alt="app tv" onerror="handleImageError(this)">
+    <div class="mov-name">
+<div class="tv-name-inner">episode 1118</div>
+    </div>
+    <div class="link">سيرفرات المشاهدة</div>
+    <div class="number-container">
+        <div 
+        class="number" 
+        data-link="intent://aHR0cHM6Ly9kbC5kcm9wYm94LmNvbS9zY2wvZmkvcWptOGFxbWkydWVhNDMyenV1d3R3L2NvbmFu
+czI1LWVwMTExOC50cz9ybGtleT03d2V5MDB1d2I2MW1yejVvNWJ3Z2s1MHp5JnN0PXh1OWc3NW9l
+JmRsPTA=#Intent;scheme=xmtv;package=co.wuffy.player;end"onclick="playStream(this)"tabindex="2">1</div>
+
+<div class="number"onclick="openServer('https://www.4shared.com/web/embed/file/VHFHSDdmjq')"tabindex="3">2</div>
+
+<div class="number"  onclick="openServer('https://www.4shared.com/web/embed/file/VHFHSDdmjq')"tabindex="4">3</div>
+    </div>
+</button>
+<!--+++++++++++++++++-->                   
+ <button class="button" tabindex="1">
+    <img src="logo/01.jpg" alt="app tv" onerror="handleImageError(this)">
+    <div class="mov-name">
+<div class="tv-name-inner">episode 1119</div>
+    </div>
+    <div class="link">سيرفرات المشاهدة</div>
+    <div class="number-container">
+        <div 
+        class="number" 
+        data-link="intent://aHR0cHM6Ly9kbC5kcm9wYm94LmNvbS9zY2wvZmkvYThvZG11eGJydDRhaWppOTk2ZmRvL2NvbmFu
+czI1LWVwMTExOS50cz9ybGtleT1ic3BzbjcxZHM5MDV5eWx1enBrc2tkd2h6JnN0PXhrOGpiaXo2
+JmRsPTA=#Intent;scheme=xmtv;package=co.wuffy.player;end"onclick="playStream(this)"tabindex="2">1</div>
+
+<div class="number"onclick="openServer('https://www.4shared.com/web/embed/file/IAdXPAxBfa')"tabindex="3">2</div>
+
+<div class="number"  onclick="openServer('https://www.4shared.com/web/embed/file/IAdXPAxBfa')"tabindex="4">3</div>
+    </div>
+</button>
+
+<!--+++++++++++++++++-->                   
+ <button class="button" tabindex="1">
+    <img src="logo/01.jpg" alt="app tv" onerror="handleImageError(this)">
+    <div class="mov-name">
+<div class="tv-name-inner">episode 1120</div>
+    </div>
+    <div class="link">سيرفرات المشاهدة</div>
+    <div class="number-container">
+        <div 
+        class="number" 
+        data-link="intent://aHR0cHM6L2RsLmRyb3Bib3guY29tL3NjbC9maS9pbWgzanEzOGQ0dnI3a25peTI5bzkvY29uYW5z
+MjUtZXAxMTIwLnRzP3Jsa2V5PWYxbWhrdWk5enZrdnFzcHFndWVmZzZyY3Imc3Q9cnNyN3hqdGEm
+ZGw9MA==#Intent;scheme=xmtv;package=co.wuffy.player;end"onclick="playStream(this)"tabindex="2">1</div>
+
+<div class="number"onclick="openServer('https://www.4shared.com/web/embed/file/d774Wuj9ku')"tabindex="3">2</div>
+
+<div class="number"  onclick="openServer('https://www.4shared.com/web/embed/file/d774Wuj9ku')"tabindex="4">3</div>
+    </div>
+</button>
+<!--+++++++++++++++++-->                   
+ <button class="button" tabindex="1">
+    <img src="logo/01.jpg" alt="app tv" onerror="handleImageError(this)">
+    <div class="mov-name">
+<div class="tv-name-inner">episode 1121</div>
+    </div>
+    <div class="link">سيرفرات المشاهدة</div>
+    <div class="number-container">
+        <div 
+        class="number" 
+        data-link="intent://aHR0cHM6Ly9kbC5kcm9wYm94LmNvbS9zY2wvZmkvdXZjZTU1N3loMmZydHZ2eXZhdzM4L2NvbmFu
+czI1LWVwMTEyMS50cz9ybGtleT1kajR1dmpnajUxdHlob2sya3BlOGdtM3dhJnN0PWY2cHo2b2R3
+JmRsPTA=#Intent;scheme=xmtv;package=co.wuffy.player;end"onclick="playStream(this)"tabindex="2">1</div>
+
+<div class="number"onclick="openServer('https://www.4shared.com/web/embed/file/2SZJTguCfa')"tabindex="3">2</div>
+
+<div class="number"  onclick="openServer('https://www.4shared.com/web/embed/file/2SZJTguCfa')"tabindex="4">3</div>
+    </div>
+</button>
+<!--+++++++++++++++++-->                   
+ <button class="button" tabindex="1">
+    <img src="logo/01.jpg" alt="app tv" onerror="handleImageError(this)">
+    <div class="mov-name">
+<div class="tv-name-inner">episode 1122</div>
+    </div>
+    <div class="link">سيرفرات المشاهدة</div>
+    <div class="number-container">
+        <div 
+        class="number" 
+        data-link="intent://aHR0cHM6Ly9kbC5kcm9wYm94LmNvbS9zY2wvZmkvd2hqdTl4cXAwOHRlbnRleTZ0czV5L0RldGVj
+dGl2ZS5Db25hbi5TMjVFMTEyMi5tcDQ/cmxrZXk9OXhob2JmZnIyMGVyeHowdXZ3M3gwMzVxZSZz
+dD0xamxrY3NnMiZkbD0x#Intent;scheme=xmtv;package=co.wuffy.player;end"onclick="playStream(this)"tabindex="2">1</div>
+
+<div class="number"onclick="openServer('intent://aHR0cHM6Ly9kbC5kcm9wYm94LmNvbS9zY2wvZmkvd2hqdTl4cXAwOHRlbnRleTZ0czV5L0RldGVj
+dGl2ZS5Db25hbi5TMjVFMTEyMi5tcDQ/cmxrZXk9OXhob2JmZnIyMGVyeHowdXZ3M3gwMzVxZSZz
+dD0xamxrY3NnMiZkbD0x#Intent;scheme=xmtv;package=co.wuffy.player;end')"tabindex="3">2</div>
+
+<div class="number"  onclick="openServer('intent://aHR0cHM6Ly9kbC5kcm9wYm94LmNvbS9zY2wvZmkvd2hqdTl4cXAwOHRlbnRleTZ0czV5L0RldGVj
+dGl2ZS5Db25hbi5TMjVFMTEyMi5tcDQ/cmxrZXk9OXhob2JmZnIyMGVyeHowdXZ3M3gwMzVxZSZz
+dD0xamxrY3NnMiZkbD0x#Intent;scheme=xmtv;package=co.wuffy.player;end')"tabindex="4">3</div>
+    </div>
+</button>
+<!--+++++++++++++++++-->                   
+ <button class="button" tabindex="1">
+    <img src="logo/01.jpg" alt="app tv" onerror="handleImageError(this)">
+    <div class="mov-name">
+<div class="tv-name-inner">episode 1123</div>
+    </div>
+    <div class="link">سيرفرات المشاهدة</div>
+    <div class="number-container">
+        <div 
+        class="number" 
+        data-link="intent://aHR0cHM6Ly9kbC5kcm9wYm94LmNvbS9zY2wvZmkvMTJhdDJ3bXN6ajdzbzdnY29vNHcxL0RldGVj
+dGl2ZS5Db25hbi5TMjVFMTEyMy5tcDQ/cmxrZXk9b2F4dDZha3h3ZXhld293MnJidjAxZGtieiZz
+dD1keTMzZ2NzbSZkbD0x#Intent;scheme=xmtv;package=co.wuffy.player;end"onclick="playStream(this)"tabindex="2">1</div>
+
+<div class="number"onclick="openServer('intent://aHR0cHM6Ly9kbC5kcm9wYm94LmNvbS9zY2wvZmkvMTJhdDJ3bXN6ajdzbzdnY29vNHcxL0RldGVj
+dGl2ZS5Db25hbi5TMjVFMTEyMy5tcDQ/cmxrZXk9b2F4dDZha3h3ZXhld293MnJidjAxZGtieiZz
+dD1keTMzZ2NzbSZkbD0x#Intent;scheme=xmtv;package=co.wuffy.player;end')"tabindex="3">2</div>
+
+<div class="number"  onclick="openServer('intent://aHR0cHM6Ly9kbC5kcm9wYm94LmNvbS9zY2wvZmkvMTJhdDJ3bXN6ajdzbzdnY29vNHcxL0RldGVj
+dGl2ZS5Db25hbi5TMjVFMTEyMy5tcDQ/cmxrZXk9b2F4dDZha3h3ZXhld293MnJidjAxZGtieiZz
+dD1keTMzZ2NzbSZkbD0x#Intent;scheme=xmtv;package=co.wuffy.player;end')"tabindex="4">3</div>
+    </div>
+</button>
+<!--+++++++++++++++++-->                   
+ <button class="button" tabindex="1">
+    <img src="logo/01.jpg" alt="app tv" onerror="handleImageError(this)">
+    <div class="mov-name">
+<div class="tv-name-inner">episode 1124</div>
+    </div>
+    <div class="link">سيرفرات المشاهدة</div>
+    <div class="number-container">
+        <div 
+        class="number" 
+        data-link="intent://aHR0cHM6Ly9kbC5kcm9wYm94LmNvbS9zY2wvZmkvMDRybWhtbmN1angycGxjazVraHZmL19EZXRl
+Y3RpdmUuQ29uYW4uRTExMjQubXA0P3Jsa2V5PXB5c2xkOGY2MjllbDljdDhzdmoyYzY4cWMmc3Q9
+aWRlNHZnZDkmZGw9MQ==#Intent;scheme=xmtv;package=co.wuffy.player;end"onclick="playStream(this)"tabindex="2">1</div>
+
+<div class="number"onclick="openServer('intent://aHR0cHM6Ly9kbC5kcm9wYm94LmNvbS9zY2wvZmkvMDRybWhtbmN1angycGxjazVraHZmL19EZXRl
+Y3RpdmUuQ29uYW4uRTExMjQubXA0P3Jsa2V5PXB5c2xkOGY2MjllbDljdDhzdmoyYzY4cWMmc3Q9
+aWRlNHZnZDkmZGw9MQ==#Intent;scheme=xmtv;package=co.wuffy.player;end')"tabindex="3">2</div>
+
+<div class="number"  onclick="openServer('intent://aHR0cHM6Ly9kbC5kcm9wYm94LmNvbS9zY2wvZmkvMTJhdDJ3bXN6ajdzbzdnY29vNHcxL0RldGVj
+dGl2ZS5Db25hbi5TMjVFMTEyMy5tcDQ/cmxrZXk9b2F4dDZha3h3ZXhld293MnJidjAxZGtieiZz
+dD1keTMzZ2NzbSZkbD0x#Intent;scheme=xmtv;package=co.wuffy.player;end')"tabindex="4">3</div>
+    </div>
+</button>
+
+<!--+++++++++++++++++-->                   
+ <button class="button" tabindex="1">
+    <img src="logo/01.jpg" alt="app tv" onerror="handleImageError(this)">
+    <div class="mov-name">
+<div class="tv-name-inner">episode 1124</div>
+    </div>
+    <div class="link">سيرفرات المشاهدة</div>
+    <div class="number-container">
+        <div 
+        class="number" 
+        data-link="intent://aHR0cHM6Ly9kbC5kcm9wYm94LmNvbS9zY2wvZmkvMDRybWhtbmN1angycGxjazVraHZmL19EZXRl
+Y3RpdmUuQ29uYW4uRTExMjQubXA0P3Jsa2V5PXB5c2xkOGY2MjllbDljdDhzdmoyYzY4cWMmc3Q9
+aWRlNHZnZDkmZGw9MQ==#Intent;scheme=xmtv;package=co.wuffy.player;end"onclick="playStream(this)"tabindex="2">1</div>
+
+<div class="number"onclick="openServer('intent://aHR0cHM6Ly9kbC5kcm9wYm94LmNvbS9zY2wvZmkvMDRybWhtbmN1angycGxjazVraHZmL19EZXRl
+Y3RpdmUuQ29uYW4uRTExMjQubXA0P3Jsa2V5PXB5c2xkOGY2MjllbDljdDhzdmoyYzY4cWMmc3Q9
+aWRlNHZnZDkmZGw9MQ==#Intent;scheme=xmtv;package=co.wuffy.player;end')"tabindex="3">2</div>
+
+<div class="number"  onclick="openServer('intent://aHR0cHM6Ly9kbC5kcm9wYm94LmNvbS9zY2wvZmkvMTJhdDJ3bXN6ajdzbzdnY29vNHcxL0RldGVj
+dGl2ZS5Db25hbi5TMjVFMTEyMy5tcDQ/cmxrZXk9b2F4dDZha3h3ZXhld293MnJidjAxZGtieiZz
+dD1keTMzZ2NzbSZkbD0x#Intent;scheme=xmtv;package=co.wuffy.player;end')"tabindex="4">3</div>
+    </div>
+</button>
+
+<!--+++++++++++++++++-->                   
+ <button class="button" tabindex="1">
+    <img src="logo/01.jpg" alt="app tv" onerror="handleImageError(this)">
+    <div class="mov-name">
+<div class="tv-name-inner">episode 1125</div>
+    </div>
+    <div class="link">سيرفرات المشاهدة</div>
+    <div class="number-container">
+        <div 
+        class="number" 
+        data-link="intent://aHR0cHM6Ly9kbC5kcm9wYm94LmNvbS9zY2wvZmkvZHl5ZzZsOHZ6ZW85MGt2d3M5ZXA0L0RldGVj
+dGl2ZS5Db25hbi5TMjVFMTEyNS5tcDQ/cmxrZXk9cWFnYWxyeWE5aGc2bXFiNWZ6eTFvYjR0dSZz
+dD1zd2M0MmthcyZkbD0x#Intent;scheme=xmtv;package=co.wuffy.player;end"onclick="playStream(this)"tabindex="2">1</div>
+
+<div class="number"onclick="openServer('intent://aHR0cHM6Ly9kbC5kcm9wYm94LmNvbS9zY2wvZmkvZHl5ZzZsOHZ6ZW85MGt2d3M5ZXA0L0RldGVj
+dGl2ZS5Db25hbi5TMjVFMTEyNS5tcDQ/cmxrZXk9cWFnYWxyeWE5aGc2bXFiNWZ6eTFvYjR0dSZz
+dD1zd2M0MmthcyZkbD0x#Intent;scheme=xmtv;package=co.wuffy.player;end')"tabindex="3">2</div>
+
+<div class="number"  onclick="openServer('intent://aHR0cHM6Ly9kbC5kcm9wYm94LmNvbS9zY2wvZmkvZHl5ZzZsOHZ6ZW85MGt2d3M5ZXA0L0RldGVj
+dGl2ZS5Db25hbi5TMjVFMTEyNS5tcDQ/cmxrZXk9cWFnYWxyeWE5aGc2bXFiNWZ6eTFvYjR0dSZz
+dD1zd2M0MmthcyZkbD0x#Intent;scheme=xmtv;package=co.wuffy.player;end')"tabindex="4">3</div>
+    </div>
+</button>
+<!--+++++++++++++++++-->                   
+ <button class="button" tabindex="1">
+    <img src="logo/01.jpg" alt="app tv" onerror="handleImageError(this)">
+    <div class="mov-name">
+<div class="tv-name-inner">episode 1126</div>
+    </div>
+    <div class="link">سيرفرات المشاهدة</div>
+    <div class="number-container">
+        <div 
+        class="number" 
+        data-link="intent://aHR0cHM6Ly9kbC5kcm9wYm94LmNvbS9zY2wvZmkva3B0dXlxaHI3YndubngyZGE4MTZ6L0RldGVj
+dGl2ZS5Db25hbi5TMjVFMTEyNi5tcDQ/cmxrZXk9N2UzNnVxNjZkNzlpcTFyMjJ1Z3N6NXZ4aSZz
+dD1jbmFxYnh1OSZkbD0x#Intent;scheme=xmtv;package=co.wuffy.player;end"onclick="playStream(this)"tabindex="2">1</div>
+
+<div class="number"onclick="openServer('intent://aHR0cHM6Ly9kbC5kcm9wYm94LmNvbS9zY2wvZmkva3B0dXlxaHI3YndubngyZGE4MTZ6L0RldGVj
+dGl2ZS5Db25hbi5TMjVFMTEyNi5tcDQ/cmxrZXk9N2UzNnVxNjZkNzlpcTFyMjJ1Z3N6NXZ4aSZz
+dD1jbmFxYnh1OSZkbD0x#Intent;scheme=xmtv;package=co.wuffy.player;end')"tabindex="3">2</div>
+
+<div class="number"  onclick="openServer('intent://aHR0cHM6Ly9kbC5kcm9wYm94LmNvbS9zY2wvZmkva3B0dXlxaHI3YndubngyZGE4MTZ6L0RldGVj
+dGl2ZS5Db25hbi5TMjVFMTEyNi5tcDQ/cmxrZXk9N2UzNnVxNjZkNzlpcTFyMjJ1Z3N6NXZ4aSZz
+dD1jbmFxYnh1OSZkbD0x#Intent;scheme=xmtv;package=co.wuffy.player;end')"tabindex="4">3</div>
+    </div>
+</button>
+
+
+
+
+<script> 
+    
+let currentFocusIndex = -1; // لتتبع العنصر الحالي
+let buttons = Array.from(document.querySelectorAll('.button')); // جميع الأزرار
+let searchbar = document.getElementById('searchbar');
+let closeIcon = document.getElementById('close-icon');
+let searchIcon = document.getElementById('search-icon');
+let noResultsMessage = document.getElementById('no-results-message');
+
+// Toggle search bar visibility
+function toggleSearchBar() {
+    let isVisible = searchbar.classList.contains('show');
+    if (isVisible) {
+        closeSearchBar();
+    } else {
+        openSearchBar();
+    }
+}
+
+function openSearchBar() {
+    searchbar.classList.add('show');
+    closeIcon.classList.add('show');
+    searchbar.focus();
+    currentFocusIndex = -1;
+}
+
+function closeSearchBar() {
+    searchbar.classList.remove('show');
+    closeIcon.classList.remove('show');
+    searchbar.value = '';
+    noResultsMessage.style.display = 'none';
+    buttons.forEach(button => button.classList.remove('hidden'));
+}
+
+// Filter buttons based on search input
+function searchAnimal() {
+    let input = searchbar.value.trim().toLowerCase();
+    let hasVisibleButtons = false;
+
+    buttons.forEach(button => {
+        let buttonText = button.textContent.toLowerCase();
+        if (buttonText.includes(input)) {
+            button.classList.remove('hidden');
+            hasVisibleButtons = true;
+        } else {
+            button.classList.add('hidden');
+        }
+    });
+
+    noResultsMessage.style.display = hasVisibleButtons ? 'none' : 'block';
+}
+
+// Handle remote control key events
+document.addEventListener('keydown', function(event) {
+    if (event.key === 'Enter') {
+        if (searchbar.classList.contains('show')) {
+            searchAnimal();
+        } else {
+            toggleSearchBar();
+        }
+    } else if (event.key === 'ArrowDown') {
+        // Navigate to the next button
+        if (currentFocusIndex < buttons.length - 1) {
+            currentFocusIndex++;
+            focusButton(currentFocusIndex);
+        }
+    } else if (event.key === 'ArrowUp') {
+        // Navigate to the previous button
+        if (currentFocusIndex > 0) {
+            currentFocusIndex--;
+            focusButton(currentFocusIndex);
+        }
+    } else if (event.key === 'Backspace') {
+        if (searchbar.classList.contains('show')) {
+            closeSearchBar();
+        }
+    }
+});
+
+function focusButton(index) {
+    buttons.forEach((button, i) => {
+        button.classList.toggle('focused', i === index);
+    });
+    buttons[index]?.focus();
+}
+
+// Event listeners for icons
+searchIcon.addEventListener('click', toggleSearchBar);
+closeIcon.addEventListener('click', closeSearchBar);
+searchbar.addEventListener('input', searchAnimal);
+
+</script>
+
+<script> 
+
+
+// Open server link
+function openServer(link) {
+    if (link.startsWith('intent://')) {
+        window.open(link); // فتح باستخدام تطبيقات مثل XMTV
+    } else {
+        window.open(link, '_blank'); // فتح الرابط في نافذة جديدة
+    }
+}
+
+// Handle keyboard navigation
+document.addEventListener('keydown', function (event) {
+    let focusedElement = document.activeElement;
+
+    // Navigate using arrow keys
+    if (event.key === 'ArrowDown') {
+        moveFocus(focusedElement, 'next');
+    } else if (event.key === 'ArrowUp') {
+        moveFocus(focusedElement, 'previous');
+    } else if (event.key === 'Enter') {
+        // Trigger click on focused element
+        if (focusedElement.classList.contains('number')) {
+            focusedElement.click();
+        }
+    }
+});
+
+function moveFocus(element, direction) {
+    let focusableElements = Array.from(document.querySelectorAll('[tabindex]'))
+        .filter(el => !el.classList.contains('hidden')); // فقط العناصر الظاهرة
+    let currentIndex = focusableElements.indexOf(element);
+
+    if (direction === 'next' && currentIndex < focusableElements.length - 1) {
+        focusableElements[currentIndex + 1].focus();
+    } else if (direction === 'previous' && currentIndex > 0) {
+        focusableElements[currentIndex - 1].focus();
+    }
+}
+</script> 
+  </div> </div></div>
+        </div>
+    </div>
+</body>
+</html>
+
+
