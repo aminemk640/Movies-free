@@ -1,0 +1,1355 @@
+<!DOCTYPE html>
+<html lang="AR" dir="">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مشغل الموسيقى</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<style>
+   body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    background-color: #121212;   
+    margin-top: 60px; /* تترك مساحة للشريط العلوي */
+    font-family: 'Arial', sans-serif;
+    color: #fff;
+}
+
+.music-player {
+    width: 90%;
+      background: linear-gradient(to top left, #66ffff 0%, #222222 100%);
+    border-radius: 15px;
+    font-weight: bold;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    overflow: hidden;  
+    box-shadow: 0 0 10px #0099ff, 0 0 20px #0099ff;
+}
+
+       .current-track {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 5px;font-weight: bold;
+        }
+
+   .cover {
+            width: 96px;
+            height: 96px;
+            border-radius: 50%;
+            margin-bottom: 4px;
+                transition: transform 0.5s ease-in-out;  /* تأثير سلس عند التدوير */
+        }
+
+
+.cover.rotating {
+    transform: rotate(80deg);  /* تدوير الصورة 360 درجة */
+}
+
+
+.track-info {
+    flex: 1;
+    text-align: center;
+}
+
+.track-info h2 {
+    margin: 1px;
+    font-size: 20px;
+}
+
+.track-info p {
+    margin: 1px 0;
+    color: #fff;
+    font-size: 16px;
+}
+
+.progress-bar {
+    display: flex;
+    align-items: center;
+    margin-top: 2px;
+}
+
+.progress-bar .current-time,
+.progress-bar .total-time {
+    font-size: 16px;
+}
+
+.progress-bar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 10px 0;
+}
+
+.progress {
+    flex: 1;
+    height: 8px;
+    background-color: #ccc;
+    border-radius: 4px;
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.progress-filled {
+    height: 100%;
+    width: 0;
+    background: linear-gradient(90deg, #d0368a, #708ad4);
+    border-radius: 4px;
+    transition: width 0.1s linear;
+}
+
+
+.controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 0px;
+}
+
+.controls button {
+    background: none;
+    align-items: center;
+    border: none;
+    color: #fff;
+    font-size: 25px;
+    cursor: pointer;
+    margin-top: 2px;
+    
+}
+
+button:focus, button:hover {
+background: #ff0066;
+    color: #000 ;
+    border-radius: 8px;
+    border: 2px solid #fff;   
+}
+button:focus svg path,
+button:hover svg path {
+  fill: #000; /* تغيير لون الملء للمسار إلى الأسود */
+  outline: none; /* إزالة تأثير التركيز الافتراضي */
+  border-radius: 8px;
+  border: 2px solid #ff0066;
+}
+button:focus svg path,
+button:hover svg path {
+  fill: #000; /* تغيير لون الملء للمسار إلى الأسود */
+  outline: none; /* إزالة تأثير التركيز الافتراضي */
+  border-radius: 8px;
+  border: 2px solid #ff0066;
+}
+button.active {
+        background: linear-gradient(to top left, #669999 0%, #ff9933 100%);
+    color: #000 ;
+    border-radius: 8px;
+    outline: none;
+    border: 2px solid #000;
+}
+.playlist {
+    background: #669999;
+    padding: 8px;
+    overflow-y: scroll;  /* سيظهر شريط التمرير دائمًا عموديًا */
+    max-height: 500px; 
+    font-family: 'El Messiri', sans-serif; /* نوع الخط */
+    scrollbar-width: thin; /* لتقليل حجم شريط التمرير في بعض المتصفحات */
+}
+
+/* شريط التمرير في المتصفحات التي تدعم ::-webkit-scrollbar */
+::-webkit-scrollbar {
+  width: 8px;  /* عرض الشريط */
+}
+
+/* مسار الشريط */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey;
+  border-radius: 7px;
+}
+
+/* المقبض */
+::-webkit-scrollbar-thumb {
+  background-color: #888;  /* اللون الأساسي للمقبض */
+  border-radius: 10px;
+}
+
+/* عندما يكون الشريط في حالة التمرير */
+::-webkit-scrollbar-thumb:hover {
+  background-color: #555;  /* اللون عند تمرير الماوس */
+}
+
+
+.track {
+    text-align: center;
+    display: flex;
+    align-items: center;    
+    font-family: 'El Messiri', sans-serif; /* نوع الخط */
+    padding: 1px;
+    border-radius: 10px;
+    cursor: pointer;
+    border-radius: 8px; 
+    border: 2px solid #fff;
+    margin-top: 5px;
+    transition: background 0.3s;
+}
+
+
+.track img {
+    width: 40px;
+    height: 40px;
+    border-radius: 5px;
+    margin-left: 5px;  
+    margin: -10px 10px -10px 0px;
+}
+
+.track-details {
+    flex: 1;
+}
+
+.track-details h3 {
+    margin: 0;
+    font-size: 16px;
+}
+
+.track-details p {
+    margin: 5px 0 0;
+    color: #000;
+    font-size: 14px;
+}
+
+
+.track.active {
+ background: linear-gradient(to top right, #00ff99 0%, #99ffcc 100%); 
+color: #000;
+}
+.track:focus {
+    background: #ff0066; /* يمكنك تغيير اللون حسب رغبتك */
+    color: #fff;
+    outline: none; /* إزالة التأثير الافتراضي للتركيز */
+    border: 2px solid #ff0066; /* يمكن تغيير هذا اللون أيضًا */
+}
+
+.track:hover {
+    background: #ccc;
+    color: #000;
+    border-radius: 8px;
+    outline: none;
+    border: 2px solid #ff0066;
+}
+
+.track-number {
+    margin-left: 10px;
+    text-align: center;
+    color: #fff;
+    font-size: 16px;
+    background: #ff0066;   
+    border-radius: 50%;
+    width: 28px;
+    height: 28px; 
+
+}
+@keyframes rotate {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.cover.rotating {
+    animation: rotate 2s linear infinite;  /* التدوير المستمر */
+}
+
+</style>
+
+</head>
+<body>
+   <div class="music-player">
+    <div class="current-track" tabindex="0">
+        <img class="cover"src="https://i.imgur.com/3Ewyfx6.png" alt="Album Cover" >
+        <div class="track-info">
+            <h2>koran</h2>
+            <p>Royalty</p>
+            <div class="progress-bar">
+    <span class="current-time">0:00</span>
+    <div class="progress">
+        <div class="progress-filled"></div>
+    </div>
+    <span class="total-time">0:00</span>
+</div>
+
+            <div class="controls">
+<button class="shuffle"  tabindex="0"><svg height="25px" width="25px" fill="#fff"xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M403.8 34.4c12-5 25.7-2.2 34.9 6.9l64 64c6 6 9.4 14.1 9.4 22.6s-3.4 16.6-9.4 22.6l-64 64c-9.2 9.2-22.9 11.9-34.9 6.9s-19.8-16.6-19.8-29.6l0-32-32 0c-10.1 0-19.6 4.7-25.6 12.8L284 229.3 244 176l31.2-41.6C293.3 110.2 321.8 96 352 96l32 0 0-32c0-12.9 7.8-24.6 19.8-29.6zM164 282.7L204 336l-31.2 41.6C154.7 401.8 126.2 416 96 416l-64 0c-17.7 0-32-14.3-32-32s14.3-32 32-32l64 0c10.1 0 19.6-4.7 25.6-12.8L164 282.7zm274.6 188c-9.2 9.2-22.9 11.9-34.9 6.9s-19.8-16.6-19.8-29.6l0-32-32 0c-30.2 0-58.7-14.2-76.8-38.4L121.6 172.8c-6-8.1-15.5-12.8-25.6-12.8l-64 0c-17.7 0-32-14.3-32-32s14.3-32 32-32l64 0c30.2 0 58.7 14.2 76.8 38.4L326.4 339.2c6 8.1 15.5 12.8 25.6 12.8l32 0 0-32c0-12.9 7.8-24.6 19.8-29.6s25.7-2.2 34.9 6.9l64 64c6 6 9.4 14.1 9.4 22.6s-3.4 16.6-9.4 22.6l-64 64z"></path></svg></button>
+<button class="seek-backward"  tabindex="0"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#fff"><path d="M480-80q-75 0-140.5-28.5t-114-77q-48.5-48.5-77-114T120-440h80q0 117 81.5 198.5T480-160q117 0 198.5-81.5T760-440q0-117-81.5-198.5T480-720h-6l62 62-56 58-160-160 160-160 56 58-62 62h6q75 0 140.5 28.5t114 77q48.5 48.5 77 114T840-440q0 75-28.5 140.5t-77 114q-48.5 48.5-114 77T480-80ZM360-320v-180h-60v-60h120v240h-60Zm140 0q-17 0-28.5-11.5T460-360v-160q0-17 11.5-28.5T500-560h80q17 0 28.5 11.5T620-520v160q0 17-11.5 28.5T580-320h-80Zm20-60h40v-120h-40v120Z"></path></svg></button> 
+
+ <button class="prev"tabindex="0"><svg height="25px" width="25px" fill="#fff"xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path d="M267.5 440.6c9.5 7.9 22.8 9.7 34.1 4.4s18.4-16.6 18.4-29l0-320c0-12.4-7.2-23.7-18.4-29s-24.5-3.6-34.1 4.4l-192 160L64 241 64 96c0-17.7-14.3-32-32-32S0 78.3 0 96L0 416c0 17.7 14.3 32 32 32s32-14.3 32-32l0-145 11.5 9.6 192 160z"></path></svg></button>
+                
+<button class="play-pause"  tabindex="0"><svg height="25px" width="25px" fill="#fff"xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80L0 432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"></path></svg></button>
+                
+<button class="next" tabindex="0"><svg height="25px" width="25px" fill="#fff"xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path d="M52.5 440.6c-9.5 7.9-22.8 9.7-34.1 4.4S0 428.4 0 416L0 96C0 83.6 7.2 72.3 18.4 67s24.5-3.6 34.1 4.4l192 160L256 241l0-145c0-17.7 14.3-32 32-32s32 14.3 32 32l0 320c0 17.7-14.3 32-32 32s-32-14.3-32-32l0-145-11.5 9.6-192 160z"></path></svg></button>
+
+<button class="seek-forward"tabindex="0"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#fff"><path d="M360-320v-180h-60v-60h120v240h-60Zm140 0q-17 0-28.5-11.5T460-360v-160q0-17 11.5-28.5T500-560h80q17 0 28.5 11.5T620-520v160q0 17-11.5 28.5T580-320h-80Zm20-60h40v-120h-40v120ZM480-80q-75 0-140.5-28.5t-114-77q-48.5-48.5-77-114T120-440q0-75 28.5-140.5t77-114q48.5-48.5 114-77T480-800h6l-62-62 56-58 160 160-160 160-56-58 62-62h-6q-117 0-198.5 81.5T200-440q0 117 81.5 198.5T480-160q117 0 198.5-81.5T760-440h80q0 75-28.5 140.5t-77 114q-48.5 48.5-114 77T480-80Z"></path></svg></button>
+
+<button class="repeat"  tabindex="0"><svg xmlns="http://www.w3.org/2000/svg" height="27px" viewBox="0 -960 960 960" width="27px" fill="#fff"><path d="M460-360v-180h-60v-60h120v240h-60ZM280-80 120-240l160-160 56 58-62 62h406v-160h80v240H274l62 62-56 58Zm-80-440v-240h486l-62-62 56-58 160 160-160 160-56-58 62-62H280v160h-80Z"></path></svg></button>
+
+
+            </div>
+        </div>
+    </div>
+    <div class="playlist" tabindex="0"></div>
+</div>
+
+<audio id="audio-player" tabindex="0"></audio>
+
+<script>
+const tracks = [
+      {
+ title: "سورة الفاتحة",
+        artist: "  سعد الغامدي",
+        cover: "https://i.imgur.com/3Ewyfx6.png",
+        src: "https://listen.ourquraan.com/Saad_Alghamdi/001.mp3",
+        album: 'القرآن الكريم', 
+    },
+    {
+        title: "سورة البقرة",
+        artist: "  سعد الغامدي",
+        cover: "https://i.imgur.com/3Ewyfx6.png",
+        src: "https://listen.ourquraan.com/Saad_Alghamdi/002.mp3"
+    },
+    {
+        title: "سورة آل عمران",
+        artist: "  سعد الغامدي",
+        cover: "https://i.imgur.com/3Ewyfx6.png",
+        src: "https://listen.ourquraan.com/Saad_Alghamdi/003.mp3"
+    },
+    
+    
+       {
+        title: "سورة النساء",
+        artist: "  سعد الغامدي",
+        cover: "https://i.imgur.com/3Ewyfx6.png",
+        src: "https://listen.ourquraan.com/Saad_Alghamdi/004.mp3"
+    },
+    {
+        title: "سورة المائدة",
+        artist: "  سعد الغامدي",
+        cover: "https://i.imgur.com/3Ewyfx6.png",
+        src: "https://listen.ourquraan.com/Saad_Alghamdi/005.mp3"
+    },
+    {
+        title: "سورة الأنعام",
+        artist: "  سعد الغامدي",
+        cover: "https://i.imgur.com/3Ewyfx6.png",
+        src: "https://listen.ourquraan.com/Saad_Alghamdi/006.mp3"
+    },
+    
+    
+       {
+        title: "سورة الأعراف",
+        artist: "  سعد الغامدي",
+        cover: "https://i.imgur.com/3Ewyfx6.png",
+        src: "https://listen.ourquraan.com/Saad_Alghamdi.mp3"
+    },
+    {
+        title: "سورة الأنفال",
+        artist: "  سعد الغامدي",
+        cover: "https://i.imgur.com/3Ewyfx6.png",
+        src: "https://listen.ourquraan.com/Saad_Alghamdi/008.mp3"
+    },
+    {
+        title: "سورة التوبة",
+        artist: "  سعد الغامدي",
+        cover: "https://i.imgur.com/3Ewyfx6.png",
+        src: "https://listen.ourquraan.com/Saad_Alghamdi/009.mp3"
+    },
+       {
+        title: "سورة يونس",
+        artist: "  سعد الغامدي",
+        cover: "https://i.imgur.com/3Ewyfx6.png",
+        src: "https://listen.ourquraan.com/Saad_Alghamdi/010.mp3"
+    },
+    {
+        title: "سورة هود",
+        artist: "  سعد الغامدي",
+        cover: "https://i.imgur.com/3Ewyfx6.png",
+        src: "https://listen.ourquraan.com/Saad_Alghamdi/011.mp3"
+    },
+    
+       {
+        title: "سورة يوسف",
+        artist: "  سعد الغامدي",
+        cover: "https://i.imgur.com/3Ewyfx6.png",
+        src: "https://listen.ourquraan.com/Saad_Alghamdi/012.mp3"
+    },
+        {
+        title: "سورة الرعد",
+        artist: "  سعد الغامدي",
+        cover: "https://i.imgur.com/3Ewyfx6.png",
+        src: "https://listen.ourquraan.com/Saad_Alghamdi/013.mp3"
+        
+    },
+    
+    
+   
+            {
+        title: "سورة إبراهيم",
+        artist: "  سعد الغامدي",
+        cover: "https://i.imgur.com/3Ewyfx6.png",
+        src: "https://listen.ourquraan.com/Saad_Alghamdi/014.mp3"
+    },
+                {
+        title: "سورة الحجر",
+        artist: "  سعد الغامدي",
+        cover: "https://i.imgur.com/3Ewyfx6.png",
+        src: "https://listen.ourquraan.com/Saad_Alghamdi/015.mp3"
+    },
+                    {
+        title: "سورة النحل",
+        artist: "  سعد الغامدي",
+        cover: "https://i.imgur.com/3Ewyfx6.png",
+        src: "https://listen.ourquraan.com/Saad_Alghamdi/016.mp3"
+    },
+    
+                    {
+        title: "سورة الإسراء",
+        artist: "  سعد الغامدي",
+        cover: "https://i.imgur.com/3Ewyfx6.png",
+        src: "https://listen.ourquraan.com/Saad_Alghamdi/017.mp3"
+    },
+    {
+        title: "سورة الكهف ",
+        artist: "  سعد الغامدي",
+        cover: "https://i.imgur.com/3Ewyfx6.png",
+        src: "https://listen.ourquraan.com/Saad_Alghamdi/018.mp3"
+    },
+       {
+        title: "سورة مريم",
+        artist: "  سعد الغامدي",
+        cover: "https://i.imgur.com/3Ewyfx6.png",
+        src: "https://listen.ourquraan.com/Saad_Alghamdi/019.mp3"
+    },
+       {
+        title: "سورة طه",
+        artist: "  سعد الغامدي",
+        cover: "https://i.imgur.com/3Ewyfx6.png",
+        src: "https://listen.ourquraan.com/Saad_Alghamdi/020.mp3"
+    },
+     {
+        title: "سورة الأنبياء",
+        artist: "  سعد الغامدي",
+        cover: "https://i.imgur.com/3Ewyfx6.png",
+        src: "https://listen.ourquraan.com/Saad_Alghamdi/021.mp3"
+    },
+      {
+        title: "سورة الحج",
+        artist: "  سعد الغامدي",
+        cover: "https://i.imgur.com/3Ewyfx6.png",
+        src: "https://listen.ourquraan.com/Saad_Alghamdi/022.mp3"
+    },
+       {
+       title: "سورة المؤمنون",
+        artist: "  سعد الغامدي",
+        cover: "https://i.imgur.com/3Ewyfx6.png",
+        src: "https://listen.ourquraan.com/Saad_Alghamdi/023.mp3"
+    },
+    
+     {
+       title: "سورة النور",
+        artist: "  سعد الغامدي",
+        cover: "https://i.imgur.com/3Ewyfx6.png",
+        src: "https://listen.ourquraan.com/Saad_Alghamdi/024.mp3"
+    }, 
+    {
+       title: "سورة الفرقان",
+        artist: "  سعد الغامدي",
+        cover: "https://i.imgur.com/3Ewyfx6.png",
+        src: "https://listen.ourquraan.com/Saad_Alghamdi/025.mp3"
+    }, 
+    {
+       title: "سورة الشعراء",
+        artist: "  سعد الغامدي",
+        cover: "https://i.imgur.com/3Ewyfx6.png",
+        src: "https://listen.ourquraan.com/Saad_Alghamdi/026.mp3"
+    },
+    
+    {
+       title: "سورة النمل",
+        artist: "  سعد الغامدي",
+        cover: "https://i.imgur.com/3Ewyfx6.png",
+        src: "https://listen.ourquraan.com/Saad_Alghamdi/027.mp3", 
+        album: 'القرآن الكريم', 
+    },
+    {
+       title: "سورة القصص",
+        artist: "  سعد الغامدي",
+        cover: "https://i.imgur.com/3Ewyfx6.png",
+        src: "https://listen.ourquraan.com/Saad_Alghamdi/028.mp3"
+        , 
+        album: 'القرآن الكريم', 
+    }, 
+    {
+       title: "سورة العنكبوت",
+        artist: "  سعد الغامدي",
+        cover: "https://i.imgur.com/3Ewyfx6.png",
+        src: "https://listen.ourquraan.com/Saad_Alghamdi/029.mp3", 
+        album: 'القرآن الكريم', 
+    },
+    
+      {
+       title: "سورة الروم",
+        artist: "  سعد الغامدي",
+        cover: "https://i.imgur.com/3Ewyfx6.png",
+        src: "https://listen.ourquraan.com/Saad_Alghamdi/030.mp3", 
+        album: 'القرآن الكريم', 
+    },
+    
+        
+      {
+       title: "سورة لقمان",
+        artist: "  سعد الغامدي",
+        cover: "https://i.imgur.com/3Ewyfx6.png",
+        src: "https://listen.ourquraan.com/Saad_Alghamdi/031.mp3", 
+        album: 'القرآن الكريم', 
+    },
+    
+         {
+       title: "سورة السجدة",
+        artist: "  سعد الغامدي",
+        cover: "https://i.imgur.com/3Ewyfx6.png",
+        src: "https://listen.ourquraan.com/Saad_Alghamdi/032.mp3", 
+        album: 'القرآن الكريم', 
+    },
+    
+        
+      {
+       title: "سورة الأحزاب",
+        artist: "  سعد الغامدي",
+        cover: "https://i.imgur.com/3Ewyfx6.png",
+        src: "https://listen.ourquraan.com/Saad_Alghamdi/033.mp3", 
+        album: 'القرآن الكريم', 
+    },
+    
+    {
+       title: "سورة سبأ",
+        artist: "  سعد الغامدي",
+        cover: "https://i.imgur.com/3Ewyfx6.png",
+        src: "https://listen.ourquraan.com/Saad_Alghamdi/034.mp3", 
+        album: 'القرآن الكريم', 
+    },
+    
+    {
+         title: "سورة فاطر",
+        artist: "  سعد الغامدي",
+        cover: "https://i.imgur.com/3Ewyfx6.png",
+        src: "https://listen.ourquraan.com/Saad_Alghamdi/035.mp3", 
+        album: 'القرآن الكريم', 
+    }, 
+        {
+         title: "سورة يس",
+        artist: "  سعد الغامدي",
+        cover: "https://i.imgur.com/3Ewyfx6.png",
+        src: "https://listen.ourquraan.com/Saad_Alghamdi/036.mp3", 
+        album: 'القرآن الكريم', 
+    }, 
+    
+           {
+         title: "سورة الصافات",
+        artist: "  سعد الغامدي",
+        cover: "https://i.imgur.com/3Ewyfx6.png",
+        src: "https://listen.ourquraan.com/Saad_Alghamdi/037.mp3", 
+        album: 'القرآن الكريم', 
+    }, 
+      
+           {
+         title: "سورة ص",
+        artist: "  سعد الغامدي",
+        cover: "https://i.imgur.com/3Ewyfx6.png",
+        src: "https://listen.ourquraan.com/Saad_Alghamdi/038.mp3", 
+        album: 'القرآن الكريم', 
+    }, 
+            {
+         title: "سورة الزمر",
+        artist: "  سعد الغامدي",
+        cover: "https://i.imgur.com/3Ewyfx6.png",
+        src: "https://listen.ourquraan.com/Saad_Alghamdi/039.mp3", 
+        album: 'القرآن الكريم', 
+    },
+        {  title: "سورة غافر",
+        artist: "  سعد الغامدي",
+        cover: "https://i.imgur.com/3Ewyfx6.png",
+        src: "https://listen.ourquraan.com/Saad_Alghamdi/040.mp3", 
+        album: 'القرآن الكريم', 
+    },
+    {
+         title: "سورة فصّلت",
+        artist: "  سعد الغامدي",
+        cover: "https://i.imgur.com/3Ewyfx6.png",
+        src: "https://listen.ourquraan.com/Saad_Alghamdi/041.mp3", 
+        album: 'القرآن الكريم', 
+    }, 
+    
+                        {
+         title: "سورة الشورى",
+        artist: "  سعد الغامدي",
+        cover: "https://i.imgur.com/3Ewyfx6.png",
+        src: "https://listen.ourquraan.com/Saad_Alghamdi/042.mp3", 
+        album: 'القرآن الكريم', 
+    }, 
+                    {
+         title: "سورة الزخرف",
+        artist: "  سعد الغامدي",
+        cover: "https://i.imgur.com/3Ewyfx6.png",
+        src: "https://listen.ourquraan.com/Saad_Alghamdi/043.mp3", 
+        album: 'القرآن الكريم', 
+    }, 
+                        {
+         title: "سورة الدّخان",
+        artist: "  سعد الغامدي",
+        cover: "https://i.imgur.com/3Ewyfx6.png",
+        src: "https://listen.ourquraan.com/Saad_Alghamdi/044.mp3", 
+        album: 'القرآن الكريم', 
+    }, 
+                       {
+         title: "سورة الجاثية",
+        artist: "  سعد الغامدي",
+        cover: "https://i.imgur.com/3Ewyfx6.png",
+        src: "https://listen.ourquraan.com/Saad_Alghamdi/045.mp3", 
+        album: 'القرآن الكريم', 
+    },
+                          {
+         title: "سورة الأحقاف",
+        artist: "  سعد الغامدي",
+        cover: "https://i.imgur.com/3Ewyfx6.png",
+        src: "https://listen.ourquraan.com/Saad_Alghamdi/046.mp3", 
+        album: 'القرآن الكريم', 
+    },
+                            {
+         title: "سورة محمد",
+        artist: "  سعد الغامدي",
+        cover: "https://i.imgur.com/3Ewyfx6.png",
+        src: "https://listen.ourquraan.com/Saad_Alghamdi/047.mp3", 
+        album: 'القرآن الكريم', 
+    },
+                            {
+         title: "سورة الفتح",
+        artist: "  سعد الغامدي",
+        cover: "https://i.imgur.com/3Ewyfx6.png",
+        src: "https://listen.ourquraan.com/Saad_Alghamdi/048.mp3", 
+        album: 'القرآن الكريم', 
+    },
+                              {
+         title: "سورة الحجرات",
+        artist: "  سعد الغامدي",
+        cover: "https://i.imgur.com/3Ewyfx6.png",
+        src: "https://listen.ourquraan.com/Saad_Alghamdi/049.mp3", 
+        album: 'القرآن الكريم', 
+    },
+       {
+         title: "سورة ق",
+        artist: "  سعد الغامدي",
+        cover: "https://i.imgur.com/3Ewyfx6.png",
+        src: "https://listen.ourquraan.com/Saad_Alghamdi/050.mp3", 
+        album: 'القرآن الكريم', 
+    },
+        {
+         title: "سورة الذاريات",
+        artist: "  سعد الغامدي",
+        cover: "https://i.imgur.com/3Ewyfx6.png",
+        src: "https://listen.ourquraan.com/Saad_Alghamdi/051.mp3", 
+        album: 'القرآن الكريم', 
+    },
+          {
+         title: "سورة الطور",
+        artist: "  سعد الغامدي",
+        cover: "https://i.imgur.com/3Ewyfx6.png",
+        src: "https://listen.ourquraan.com/Saad_Alghamdi/052.mp3", 
+        album: 'القرآن الكريم', 
+    }, 
+         {
+         title: "سورة النجم",
+        artist: "  سعد الغامدي",
+        cover: "https://i.imgur.com/3Ewyfx6.png",
+        src: "https://listen.ourquraan.com/Saad_Alghamdi/053.mp3", 
+        album: 'القرآن الكريم', 
+    }, 
+       {
+         title: "سورة القمر",
+        artist: "  سعد الغامدي",
+        cover: "https://i.imgur.com/3Ewyfx6.png",
+        src: "https://listen.ourquraan.com/Saad_Alghamdi/054.mp3", 
+        album: 'القرآن الكريم', 
+    },  
+        {
+         title: "سورة الرحمن",
+        artist: "  سعد الغامدي",
+        cover: "https://i.imgur.com/3Ewyfx6.png",
+        src: "https://listen.ourquraan.com/Saad_Alghamdi/055.mp3", 
+        album: 'القرآن الكريم', 
+    },  
+        {
+         title: "سورة الواقعة",
+        artist: "  سعد الغامدي",
+        cover: "https://i.imgur.com/3Ewyfx6.png",
+        src: "https://listen.ourquraan.com/Saad_Alghamdi/056.mp3", 
+        album: 'القرآن الكريم', 
+    },   
+      {
+         title: "سورة الحديد",
+        artist: "  سعد الغامدي",
+        cover: "https://i.imgur.com/3Ewyfx6.png",
+        src: "https://listen.ourquraan.com/Saad_Alghamdi/057.mp3", 
+        album: 'القرآن الكريم', 
+    },   
+        {
+         title: "سورة المجادلة",
+        artist: "  سعد الغامدي",
+        cover: "https://i.imgur.com/3Ewyfx6.png",
+        src: "https://listen.ourquraan.com/Saad_Alghamdi/058.mp3", 
+        album: 'القرآن الكريم', 
+    },   
+    {
+         title: "سورة الحشر",
+        artist: "  سعد الغامدي",
+        cover: "https://i.imgur.com/3Ewyfx6.png",
+        src: "https://listen.ourquraan.com/Saad_Alghamdi/059.mp3", 
+        album: 'القرآن الكريم', 
+    }, 
+    
+        {
+         title: "سورة الممتحنة",
+        artist: "  سعد الغامدي",
+        cover: "https://i.imgur.com/3Ewyfx6.png",
+        src: "https://listen.ourquraan.com/Saad_Alghamdi/060.mp3", 
+        album: 'القرآن الكريم', 
+    }, 
+        {
+         title: "سورة الصف",
+        artist: "  سعد الغامدي",
+        cover: "https://i.imgur.com/3Ewyfx6.png",
+        src: "https://listen.ourquraan.com/Saad_Alghamdi/061.mp3", 
+        album: 'القرآن الكريم', 
+    }, 
+       {
+         title: "سورة الجمعة",
+        artist: "  سعد الغامدي",
+        cover: "https://i.imgur.com/3Ewyfx6.png",
+        src: "https://listen.ourquraan.com/Saad_Alghamdi/062.mp3", 
+        album: 'القرآن الكريم', 
+    }, 
+       {
+         title: "سورة المنافقون",
+        artist: "  سعد الغامدي",
+        cover: "https://i.imgur.com/3Ewyfx6.png",
+        src: "https://listen.ourquraan.com/Saad_Alghamdi/063.mp3", 
+        album: 'القرآن الكريم', 
+    }, 
+    {
+         title: "سورة التغابن",
+        artist: "  سعد الغامدي",
+        cover: "https://i.imgur.com/3Ewyfx6.png",
+        src: "https://listen.ourquraan.com/Saad_Alghamdi/064.mp3", 
+        album: 'القرآن الكريم', 
+    }, 
+      {
+         title: "سورة الطلاق",
+        artist: "  سعد الغامدي",
+        cover: "https://i.imgur.com/3Ewyfx6.png",
+        src: "https://listen.ourquraan.com/Saad_Alghamdi/065.mp3", 
+        album: 'القرآن الكريم', 
+    }, 
+        {
+         title: "سورة التحريم",
+        artist: "  سعد الغامدي",
+        cover: "https://i.imgur.com/3Ewyfx6.png",
+        src: "https://listen.ourquraan.com/Saad_Alghamdi/066.mp3", 
+        album: 'القرآن الكريم', 
+    }, 
+       {
+         title: "سورة الملك",
+        artist: "  سعد الغامدي",
+        cover: "https://i.imgur.com/3Ewyfx6.png",
+        src: "https://listen.ourquraan.com/Saad_Alghamdi/067.mp3", 
+        album: 'القرآن الكريم', 
+    }, 
+      {
+         title: "سورة القلم",
+        artist: "  سعد الغامدي",
+        cover: "https://i.imgur.com/3Ewyfx6.png",
+        src: "https://listen.ourquraan.com/Saad_Alghamdi/068.mp3", 
+        album: 'القرآن الكريم', 
+    }, 
+     {
+         title: "سورة الحاقة",
+        artist: "  سعد الغامدي",
+        cover: "https://i.imgur.com/3Ewyfx6.png",
+        src: "https://listen.ourquraan.com/Saad_Alghamdi/069.mp3", 
+        album: 'القرآن الكريم', 
+    }, 
+        {
+         title: "سورة المعارج",
+        artist: "  سعد الغامدي",
+        cover: "https://i.imgur.com/3Ewyfx6.png",
+        src: "https://listen.ourquraan.com/Saad_Alghamdi/070.mp3", 
+        album: 'القرآن الكريم', 
+    }, 
+       {
+         title: "سورة نوح",
+        artist: "  سعد الغامدي",
+        cover: "https://i.imgur.com/3Ewyfx6.png",
+        src: "https://listen.ourquraan.com/Saad_Alghamdi/071.mp3", 
+        album: 'القرآن الكريم', 
+    }, 
+       {
+         title: "سورة الجن",
+        artist: "  سعد الغامدي",
+        cover: "https://i.imgur.com/3Ewyfx6.png",
+        src: "https://listen.ourquraan.com/Saad_Alghamdi/072.mp3", 
+        album: 'القرآن الكريم', 
+    }, 
+           {
+         title: "سورة المزّمّل",
+        artist: "  سعد الغامدي",
+        cover: "https://i.imgur.com/3Ewyfx6.png",
+        src: "https://listen.ourquraan.com/Saad_Alghamdi/073.mp3", 
+        album: 'القرآن الكريم', 
+    }, 
+               {
+         title: "سورة المدّثر",
+        artist: "  سعد الغامدي",
+        cover: "https://i.imgur.com/3Ewyfx6.png",
+        src: "https://listen.ourquraan.com/Saad_Alghamdi/074.mp3", 
+        album: 'القرآن الكريم', 
+    }, 
+               {
+         title: "سورة القيامة",
+        artist: "  سعد الغامدي",
+        cover: "https://i.imgur.com/3Ewyfx6.png",
+        src: "https://listen.ourquraan.com/Saad_Alghamdi/075.mp3", 
+        album: 'القرآن الكريم', 
+    }, 
+                 {
+         title: "سورة الإنسان",
+        artist: "  سعد الغامدي",
+        cover: "https://i.imgur.com/3Ewyfx6.png",
+        src: "https://listen.ourquraan.com/Saad_Alghamdi/076.mp3", 
+        album: 'القرآن الكريم', 
+    },
+                  {
+         title: "سورة المرسلات",
+        artist: "  سعد الغامدي",
+        cover: "https://i.imgur.com/3Ewyfx6.png",
+        src: "https://listen.ourquraan.com/Saad_Alghamdi/077.mp3", 
+        album: 'القرآن الكريم', 
+    },
+                   {
+         title: "سورة النبأ",
+        artist: "  سعد الغامدي",
+        cover: "https://i.imgur.com/3Ewyfx6.png",
+        src: "https://listen.ourquraan.com/Saad_Alghamdi/078.mp3", 
+        album: 'القرآن الكريم', 
+    },
+                 {
+         title: "سورة النازعات",
+        artist: "  سعد الغامدي",
+        cover: "https://i.imgur.com/3Ewyfx6.png",
+        src: "https://listen.ourquraan.com/Saad_Alghamdi/079.mp3", 
+        album: 'القرآن الكريم', 
+    },
+    
+                {
+         title: "سورة عبس",
+        artist: "  سعد الغامدي",
+        cover: "https://i.imgur.com/3Ewyfx6.png",
+        src: "https://listen.ourquraan.com/Saad_Alghamdi/080.mp3", 
+        album: 'القرآن الكريم', 
+    },
+                    {
+         title: "سورة التكوير",
+        artist: "  سعد الغامدي",
+        cover: "https://i.imgur.com/3Ewyfx6.png",
+        src: "https://listen.ourquraan.com/Saad_Alghamdi/081.mp3", 
+        album: 'القرآن الكريم', 
+    },
+                   {
+         title: "سورة الإنفطار",
+        artist: "  سعد الغامدي",
+        cover: "https://i.imgur.com/3Ewyfx6.png",
+        src: "https://listen.ourquraan.com/Saad_Alghamdi/082.mp3", 
+        album: 'القرآن الكريم', 
+    },
+               {
+         title: "سورة المطفّفين",
+        artist: "  سعد الغامدي",
+        cover: "https://i.imgur.com/3Ewyfx6.png",
+        src: "https://listen.ourquraan.com/Saad_Alghamdi/083.mp3", 
+        album: 'القرآن الكريم', 
+    }, 
+           {
+         title: "سورة الإنشقاق",
+        artist: "  سعد الغامدي",
+        cover: "https://i.imgur.com/3Ewyfx6.png",
+        src: "https://listen.ourquraan.com/Saad_Alghamdi/084.mp3", 
+        album: 'القرآن الكريم', 
+    },
+    
+          {
+         title: "سورة البروج",
+        artist: "  سعد الغامدي",
+        cover: "https://i.imgur.com/3Ewyfx6.png",
+        src: "https://listen.ourquraan.com/Saad_Alghamdi/085.mp3", 
+        album: 'القرآن الكريم', 
+    },
+          {
+         title: "سورة الطارق",
+        artist: "  سعد الغامدي",
+        cover: "https://i.imgur.com/3Ewyfx6.png",
+        src: "https://listen.ourquraan.com/Saad_Alghamdi/086.mp3", 
+        album: 'القرآن الكريم', 
+    },
+             {
+         title: "سورة الأعلى",
+        artist: "  سعد الغامدي",
+        cover: "https://i.imgur.com/3Ewyfx6.png",
+        src: "https://listen.ourquraan.com/Saad_Alghamdi/087.mp3", 
+        album: 'القرآن الكريم', 
+    },
+    
+       {
+         title: "سورة الغاشية",
+        artist: "  سعد الغامدي",
+        cover: "https://i.imgur.com/3Ewyfx6.png",
+        src: "https://listen.ourquraan.com/Saad_Alghamdi/088.mp3", 
+        album: 'القرآن الكريم', 
+    },
+       
+       {
+         title: "سورة الفجر",
+        artist: "  سعد الغامدي",
+        cover: "https://i.imgur.com/3Ewyfx6.png",
+        src: "https://listen.ourquraan.com/Saad_Alghamdi/089.mp3", 
+        album: 'القرآن الكريم', 
+    },
+          {
+         title: "سورة البلد",
+        artist: "  سعد الغامدي",
+        cover: "https://i.imgur.com/3Ewyfx6.png",
+        src: "https://listen.ourquraan.com/Saad_Alghamdi/090.mp3", 
+        album: 'القرآن الكريم', 
+    },
+         {
+         title: "سورة الشمس",
+        artist: "  سعد الغامدي",
+        cover: "https://i.imgur.com/3Ewyfx6.png",
+        src: "https://listen.ourquraan.com/Saad_Alghamdi/091.mp3", 
+        album: 'القرآن الكريم', 
+    },
+            {
+         title: "سورة الليل",
+        artist: "  سعد الغامدي",
+        cover: "https://i.imgur.com/3Ewyfx6.png",
+        src: "https://listen.ourquraan.com/Saad_Alghamdi/092.mp3", 
+        album: 'القرآن الكريم', 
+    },
+    
+            {
+         title: "سورة الضحى",
+        artist: "  سعد الغامدي",
+        cover: "https://i.imgur.com/3Ewyfx6.png",
+        src: "https://listen.ourquraan.com/Saad_Alghamdi/093.mp3", 
+        album: 'القرآن الكريم', 
+    },
+                {
+         title: "سورة الشرح",
+        artist: "  سعد الغامدي",
+        cover: "https://i.imgur.com/3Ewyfx6.png",
+        src: "https://listen.ourquraan.com/Saad_Alghamdi/094.mp3", 
+        album: 'القرآن الكريم', 
+    },
+                    {
+         title: "سورة التين",
+        artist: "  سعد الغامدي",
+        cover: "https://i.imgur.com/3Ewyfx6.png",
+        src: "https://listen.ourquraan.com/Saad_Alghamdi/095.mp3", 
+        album: 'القرآن الكريم', 
+    },
+                      {
+         title: "سورة العلق",
+        artist: "  سعد الغامدي",
+        cover: "https://i.imgur.com/3Ewyfx6.png",
+        src: "https://listen.ourquraan.com/Saad_Alghamdi/096.mp3", 
+        album: 'القرآن الكريم', 
+    },
+    
+                      {
+         title: "سورة القدر",
+        artist: "  سعد الغامدي",
+        cover: "https://i.imgur.com/3Ewyfx6.png",
+        src: "https://listen.ourquraan.com/Saad_Alghamdi/097.mp3", 
+        album: 'القرآن الكريم', 
+    },
+       
+                      {
+         title: "سورة البينة",
+        artist: "  سعد الغامدي",
+        cover: "https://i.imgur.com/3Ewyfx6.png",
+        src: "https://listen.ourquraan.com/Saad_Alghamdi/098.mp3", 
+        album: 'القرآن الكريم', 
+    },
+                         {
+         title: "سورة الزلزلة",
+        artist: "  سعد الغامدي",
+        cover: "https://i.imgur.com/3Ewyfx6.png",
+        src: "https://listen.ourquraan.com/Saad_Alghamdi/099.mp3", 
+        album: 'القرآن الكريم', 
+    },
+                           {
+         title: "سورة العاديات",
+        artist: "  سعد الغامدي",
+        cover: "https://i.imgur.com/3Ewyfx6.png",
+        src: "https://listen.ourquraan.com/Saad_Alghamdi/100.mp3", 
+        album: 'القرآن الكريم', 
+    },
+                           {
+         title: "سورة القارعة",
+        artist: "  سعد الغامدي",
+        cover: "https://i.imgur.com/3Ewyfx6.png",
+        src: "https://listen.ourquraan.com/Saad_Alghamdi/101.mp3", 
+        album: 'القرآن الكريم', 
+    },
+                         {
+         title: "سورة التكاثر",
+        artist: "  سعد الغامدي",
+        cover: "https://i.imgur.com/3Ewyfx6.png",
+        src: "https://listen.ourquraan.com/Saad_Alghamdi/102.mp3", 
+        album: 'القرآن الكريم', 
+    },
+                     {
+         title: "سورة العصر",
+        artist: "  سعد الغامدي",
+        cover: "https://i.imgur.com/3Ewyfx6.png",
+        src: "https://listen.ourquraan.com/Saad_Alghamdi/103.mp3", 
+        album: 'القرآن الكريم', 
+    },
+               {
+         title: "سورة الفيل",
+        artist: "  سعد الغامدي",
+        cover: "https://i.imgur.com/3Ewyfx6.png",
+        src: "https://listen.ourquraan.com/Saad_Alghamdi/104.mp3", 
+        album: 'القرآن الكريم', 
+    },
+         {
+         title: "سورة الفيل",
+        artist: "  سعد الغامدي",
+        cover: "https://i.imgur.com/3Ewyfx6.png",
+        src: "https://listen.ourquraan.com/Saad_Alghamdi/105.mp3", 
+        album: 'القرآن الكريم', 
+    },
+        {
+         title: "سورة قريش",
+        artist: "  سعد الغامدي",
+        cover: "https://i.imgur.com/3Ewyfx6.png",
+        src: "https://listen.ourquraan.com/Saad_Alghamdi/106.mp3", 
+        album: 'القرآن الكريم', 
+    },
+         {
+         title: "سورة الماعون",
+        artist: "  سعد الغامدي",
+        cover: "https://i.imgur.com/3Ewyfx6.png",
+        src: "https://listen.ourquraan.com/Saad_Alghamdi/107.mp3", 
+        album: 'القرآن الكريم', 
+    },
+     {
+         title: "سورة الكوثر",
+        artist: "  سعد الغامدي",
+        cover: "https://i.imgur.com/3Ewyfx6.png",
+        src: "https://listen.ourquraan.com/Saad_Alghamdi/108.mp3", 
+        album: 'القرآن الكريم', 
+    },
+     {
+         title: "سورة الكافرون",
+        artist: "  سعد الغامدي",
+        cover: "https://i.imgur.com/3Ewyfx6.png",
+        src: "https://listen.ourquraan.com/Saad_Alghamdi/109.mp3", 
+        album: 'القرآن الكريم', 
+    },
+     {
+         title: "سورة النصر",
+        artist: "  سعد الغامدي",
+        cover: "https://i.imgur.com/3Ewyfx6.png",
+        src: "https://listen.ourquraan.com/Saad_Alghamdi/110.mp3", 
+        album: 'القرآن الكريم', 
+    },
+    
+      {
+         title: "سورة المسد",
+        artist: "  سعد الغامدي",
+        cover: "https://i.imgur.com/3Ewyfx6.png",
+        src: "https://listen.ourquraan.com/Saad_Alghamdi/111.mp3", 
+        album: 'القرآن الكريم', 
+    },
+          {
+         title: "سورة الإخلاص",
+        artist: "  سعد الغامدي",
+        cover: "https://i.imgur.com/3Ewyfx6.png",
+        src: "https://listen.ourquraan.com/Saad_Alghamdi/112.mp3", 
+        album: 'القرآن الكريم', 
+    },
+    {
+         title: "سورة الفلق",
+        artist: "  سعد الغامدي",
+        cover: "https://i.imgur.com/3Ewyfx6.png",
+        src: "https://listen.ourquraan.com/Saad_Alghamdi/113.mp3", 
+        album: 'القرآن الكريم', 
+    },
+    
+       {
+         title: "سورة النّاس",
+        artist: "سعد الغامدي",
+        cover: "https://i.imgur.com/3Ewyfx6.png",
+        src: "https://listen.ourquraan.com/Saad_Alghamdi/114.mp3", 
+        album: 'القرآن الكريم', 
+    },
+];
+
+const audioPlayer = document.getElementById('audio-player');
+const playPauseBtn = document.querySelector('.play-pause');
+const progressBar = document.querySelector('.progress');
+const progressFilled = document.querySelector('.progress-filled');
+const currentTimeElem = document.querySelector('.current-time');
+const totalTimeElem = document.querySelector('.total-time');
+const currentTrackTitle = document.querySelector('.track-info h2');
+const currentTrackArtist = document.querySelector('.track-info p');
+const currentTrackCover = document.querySelector('.cover');
+const playlistElem = document.querySelector('.playlist');
+const repeatBtn = document.querySelector('.repeat');
+const shuffleBtn = document.querySelector('.shuffle');
+const seekForwardBtn = document.querySelector('.seek-forward');
+const seekBackwardBtn = document.querySelector('.seek-backward');
+
+let isPlaying = false;
+let currentTrackIndex = 0;
+let isRepeat = false;
+let isShuffle = false;
+
+// Play / Pause button functionality
+playPauseBtn.addEventListener('click', () => {
+    if (isPlaying) {
+        audioPlayer.pause();
+        playPauseBtn.innerHTML = '<svg height="25px" width="25px" fill="#fff" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80L0 432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"></path></svg>';
+        document.querySelector('.cover').classList.remove('rotating'); // إزالة التدوير عند الإيقاف
+    } else {
+        audioPlayer.play();
+        playPauseBtn.innerHTML = '<svg height="25px" width="25px" fill="#fff" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path d="M48 64C21.5 64 0 85.5 0 112L0 400c0 26.5 21.5 48 48 48l32 0c26.5 0 48-21.5 48-48l0-288c0-26.5-21.5-48-48-48L48 64zm192 0c-26.5 0-48 21.5-48 48l0 288c0 26.5 21.5 48 48 48l32 0c26.5 0 48-21.5 48-48l0-288c0-26.5-21.5-48-48-48l-32 0z"></path></svg>';
+        document.querySelector('.cover').classList.add('rotating'); // إضافة التدوير عند التشغيل
+    }
+    isPlaying = !isPlaying;
+});
+
+progressBar.addEventListener('click', (e) => {
+    const rect = progressBar.getBoundingClientRect();
+    const offsetX = e.clientX - rect.left;
+    const progressPercent = offsetX / rect.width;
+    audioPlayer.currentTime = progressPercent * audioPlayer.duration;
+    updateProgressBar();
+});
+
+let isDragging = false;
+
+// عند بدء السحب
+progressBar.addEventListener('mousedown', (e) => {
+    isDragging = true;
+    handleDrag(e);
+});
+
+progressBar.addEventListener('mousemove', (e) => {
+    if (isDragging) {
+        handleDrag(e);
+    }
+});
+
+// إنهاء السحب
+document.addEventListener('mouseup', () => {
+    isDragging = false;
+});
+
+// تحديث مؤشر التقدم
+audioPlayer.addEventListener('timeupdate', updateProgressBar);
+
+function updateProgressBar() {
+    const progressPercent = (audioPlayer.currentTime / audioPlayer.duration) * 100;
+    progressFilled.style.width = `${progressPercent}%`;
+}
+
+// التعامل مع السحب
+function handleDrag(e) {
+    const rect = progressBar.getBoundingClientRect();
+    const offsetX = Math.min(Math.max(e.clientX - rect.left, 0), rect.width); // منع الخروج من الشريط
+    const progressPercent = offsetX / rect.width;
+    progressFilled.style.width = `${progressPercent * 100}%`;
+    audioPlayer.currentTime = progressPercent * audioPlayer.duration;
+}
+audioPlayer.addEventListener('timeupdate', () => {
+    const { currentTime, duration } = audioPlayer;
+    const progressPercent = (currentTime / duration) * 100;
+    progressFilled.style.width = `${progressPercent}%`;
+    currentTimeElem.textContent = formatTime(currentTime);
+    totalTimeElem.textContent = formatTime(duration);
+});
+
+audioPlayer.addEventListener('ended', () => {
+    if (isRepeat) {
+        audioPlayer.play();
+    } else {
+        nextTrack();
+    }
+});
+
+repeatBtn.addEventListener('click', () => {
+    isRepeat = !isRepeat;
+    repeatBtn.classList.toggle('active', isRepeat);
+});
+
+shuffleBtn.addEventListener('click', () => {
+    isShuffle = !isShuffle;
+    shuffleBtn.classList.toggle('active', isShuffle);
+});
+
+seekForwardBtn.addEventListener('click', () => {
+    audioPlayer.currentTime += 10;  // تقدم 10 ثواني
+});
+
+seekBackwardBtn.addEventListener('click', () => {
+    audioPlayer.currentTime -= 10;  // تأخير 10 ثواني
+});
+
+function formatTime(seconds) {
+    const minutes = Math.floor(seconds / 60);
+    const secs = Math.floor(seconds % 60);
+    return `${minutes}:${secs < 10 ? '0' : ''}${secs}`;
+}
+
+function loadTrack(index) {
+    const track = tracks[index];
+    audioPlayer.src = track.src;
+    currentTrackTitle.textContent = track.title;
+    currentTrackArtist.textContent = track.artist;
+    currentTrackCover.src = track.cover;
+    totalTimeElem.textContent = formatTime(audioPlayer.duration);  // لضمان تحديث الوقت الكلي للأغنية
+
+    updateMediaSession();  // تحديث شاشة القفل عند تحميل أغنية جديدة
+}
+
+function updatePlaylist() {
+    playlistElem.innerHTML = '';
+    tracks.forEach((track, index) => {
+        const trackElem = document.createElement('div');
+        trackElem.classList.add('track');
+        trackElem.setAttribute('tabindex', index);  // Add tabindex for navigation
+        trackElem.setAttribute('data-index', index);
+        
+        // Highlight the active track
+        if (index === currentTrackIndex) {
+            trackElem.classList.add('active');
+        }
+
+        trackElem.innerHTML = `
+            <img src="${track.cover}" alt="Album Cover">
+            <div class="track-details">
+                <h3>${track.title}</h3>
+                <p>${track.artist}</p>
+            </div>
+            <span class="track-number">${index + 1}</span> 
+        `;
+
+        // Add focus and blur event handlers to change the color when focused
+        trackElem.addEventListener('focus', () => {
+            trackElem.style.backgroundColor = 'Aqua';  // Add a focus color
+        });
+
+        trackElem.addEventListener('blur', () => {
+            trackElem.style.backgroundColor = '';  // Reset the color when focus is lost
+        });
+
+        trackElem.addEventListener('click', () => {
+            currentTrackIndex = index;
+            loadTrack(currentTrackIndex);
+            audioPlayer.play();
+            isPlaying = true;
+            playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
+            updatePlaylist();
+        });
+
+        playlistElem.appendChild(trackElem);
+    });
+}
+
+// تحديث شاشة القفل عند تغيير الأغنية
+function updateMediaSession() {
+    const artworkUrl = tracks[currentTrackIndex].cover || "img/cover.png";
+
+    navigator.mediaSession.metadata = new MediaMetadata({
+        title: tracks[currentTrackIndex].title,
+        artist: tracks[currentTrackIndex].artist,
+        artwork: [
+            {
+                src: artworkUrl,
+                sizes: '96x96',
+                type: 'image/png'
+            }
+        ]
+    });
+
+    // إضافة أزرار التحكم في شاشة القفل
+    navigator.mediaSession.setActionHandler('play', () => {
+        audioPlayer.play();
+        playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
+    });
+
+    navigator.mediaSession.setActionHandler('pause', () => {
+        audioPlayer.pause();
+        playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
+    });
+
+    navigator.mediaSession.setActionHandler('nexttrack', () => {
+        nextTrack();
+        updateMediaSession();  // تحديث البيانات بعد تغيير المسار
+    });
+
+    navigator.mediaSession.setActionHandler('previoustrack', () => {
+        previousTrack();
+        updateMediaSession();  // تحديث البيانات بعد تغيير المسار
+    });
+}
+
+// الانتقال للمسار التالي
+function nextTrack() {
+    currentTrackIndex = (currentTrackIndex + 1) % tracks.length;
+    loadTrack(currentTrackIndex);
+    audioPlayer.play();
+    isPlaying = true;
+    playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
+    updatePlaylist();
+}
+
+// الانتقال للمسار السابق
+function previousTrack() {
+    currentTrackIndex = (currentTrackIndex - 1 + tracks.length) % tracks.length;
+    loadTrack(currentTrackIndex);
+    audioPlayer.play();
+    isPlaying = true;
+    playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
+    updatePlaylist();
+}
+
+// عند تغيير الأغنية عبر الأزرار أو التفاعل مع الواجهة
+document.querySelector('.prev').addEventListener('click', previousTrack);
+document.querySelector('.next').addEventListener('click', nextTrack);
+
+// Load the first track initially
+loadTrack(currentTrackIndex);
+updatePlaylist();
+</script>
+
+
+
+</body>
+</html>

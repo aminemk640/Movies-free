@@ -1,0 +1,1387 @@
+<!DOCTYPE html>
+<html lang="ar" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+   
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <link rel="manifest" href="https://raw.githack.com/ahmadmk2023/code-java/main/manifest.json">
+      <link href="https://i.imgur.com/XBPOinp.png" rel="icon" type="image/x-icon">
+    <title>أبو بكر الشاطري</title>
+ 
+  </head>
+  <body>
+    <style>
+         body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+   z-index: 999; /* لضمان ظهوره فوق المحتوى */
+        }
+
+        .topnav {
+          position: fixed;
+overflow: hidden;
+border-radius:4px;
+   background-image: linear-gradient(132deg, #222 0%, #464646 100%);
+z-index: 999; /* لضمان ظهوره فوق المحتوى */
+top: 0;
+height: 57px;
+width: 100%;
+box-shadow: 5px 5px 7px #fff;
+z-index: 1;
+}  
+
+        .topnav a {
+            float: left;
+            color: #ffffff;
+            text-align: center;
+            padding: 11px 10px;
+            text-decoration: none;
+            font-size: 20px;
+        }
+
+       
+       .topnav a:focus,.topnav a:hover {
+            background-color: #ccc; /* يمكنك تغيير اللون إلى أي لون تفضله */
+            color: #000; /* تغيير لون النص إلى اللون المناسب للخلفية */
+            outline: none; /* إزالة تأثير الـ focus الافتراضي */
+            border-radius: 8px; border: 2px solid #ff0066;
+        }
+
+        .topnav-centered a {
+
+            float: none;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .topnav-right {
+            float: right;
+        }
+
+        /* Responsive navigation menu (for mobile devices) */
+        @media screen and (max-width: 100%) {
+            .topnav a,
+            .topnav-right {
+                float: none;
+                display: block;
+            }
+
+            .topnav-centered a {
+                position: relative;
+                top: 0;
+                left: 0;
+                transform: none;
+                color: #ffff;
+            }
+        }
+    </style>
+<style>
+body {
+    background-color: #2d2d2d;
+    color: #ffc266;
+    font-family: 'El Messiri', sans-serif; /* نوع الخط */
+}
+
+#myProgress {
+    width: 80%;
+    background-color: #d9d9f2;
+    cursor: pointer;
+    border-radius: 10px;
+    align: center;
+}
+
+#myBar {
+    width: 0%;
+    height: 5px;
+    background-color: #ff0066;
+    border-radius: 10px;
+}
+
+.btn-action {
+    cursor: pointer;
+    padding-top: 10px;
+    width: 30px;
+}
+
+.btn-ctn,
+.infos-ctn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.infos-ctn {
+    padding-top: 10px;
+}
+
+.btn-ctn > div {
+    padding: 5px;
+    margin-top: 18px;
+    margin-bottom: 18px;
+}
+
+.infos-ctn > div {
+    margin-bottom: 8px;
+    color: #fff;
+}
+
+.first-btn {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    margin-left: 3px;
+}
+
+.duration {
+    margin-left: 10px;
+    font-weight: bold;
+    font-family: 'El Messiri', sans-serif;
+
+}
+.title1 {
+    margin-left: 100px;
+    padding: 0px;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 500px;
+    margin: 0; color: #6597e7;
+    font-family: 'El Messiri', sans-serif;
+}
+.title {
+    margin-left: 100px;
+    padding: 0px;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 230px;
+    margin: 0; color: #fff;
+    font-family: 'El Messiri', sans-serif;
+}
+
+.artist { color: #faa61a;
+    position: sticky;
+    margin-top: 0px; /* ارتفاع الحد الأدنى للوضع (يمكنك تعديله حسب الحاجة) */
+    padding: 2px; /* تباعد داخلي للعنصر */
+    text-align: center; /* محاذاة النص في وسط العنصر */
+    font-size: 14px; /* حجم الخط */
+    font-weight: 500; /* سمك الخط */
+    margin: 0; /* إزالة هامش العنصر */
+    font-family: 'El Messiri', sans-serif; /* نوع الخط */
+}
+
+.player-ctn {
+    border-radius: 15px;
+    width: 86%;
+    padding: 5px;
+    margin: auto;
+    margin-top: 20px;
+    overflow-y: auto;
+    max-height: 480px;
+ border: 1.5px solid #faa61a;
+background-image: linear-gradient(to right, #222, #111);
+    color: #fff;
+}
+
+.playlist-track-ctn {
+    justify-content: space-between;
+    display: flex;
+    background-color: #464646;
+    margin-top: 5px;
+    border-radius: 5px;
+    cursor: pointer; 
+    border-top: 1px solid #faa61a;
+border-right: 2px solid #6597e7;
+border-bottom: 1px solid #faa61a;
+border-left:2px solid #6597e7;
+}
+
+
+.playlist-track-ctn:hover,
+.playlist-track-ctn:focus {
+  background: #ccc1ff;
+  color: #000;
+  border-radius: 5px;
+  outline: none;
+  border: 2px solid #ff0066;
+ 
+}
+
+.playlist-track-ctn:last-child {
+  border-image: linear-gradient(to right, red, gold) 1 / 2px round;
+  border-radius: 8px;
+  font-weight: bold;
+}
+
+.playlist-track-ctn > div {
+    margin: 10px;
+}
+
+.playlist-info-track,
+.playlist-duration {
+    padding-top: 7px;
+    padding-bottom: 7px;
+     color: #fff;
+    font-size: 14px;
+    pointer-events: none;
+}
+
+.playlist-ctn {
+    padding-bottom: 20px;
+}
+
+.active-track {
+    background: #ff0066;
+    color: #fff !important;
+    font-weight: bold;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey; 
+  border-radius: 7px;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background-image: linear-gradient(180deg, #d0368a 0%, #708ad4 99%);
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #b30000; 
+}
+
+
+.playlist-btn-play {
+    pointer-events: none;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.fas {
+     color: #fff;
+    font-size: 20px;    
+}
+ 
+.music-info img {
+    max-width: 100px;
+    max-height: 100px;
+    border-radius: 50%;
+    margin-right: 20px;
+    border: 2px solid #6597e7;   
+}
+.music-info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.audio-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+ #remot:focus,#remot:hover {
+         background: #ccc; /* لون	 خلفية الزر */
+         color: #000 ;
+          border-radius: 5px;
+          outline: none; /* إزالة تأثير الـ focus الافتراضي */
+             border: 2px solid #ff0066;   
+        }
+        #remot i:hover{
+  color: #000; /* لون الأيقونة عند التمرير أو التركيز */
+}
+        #remot i:focus{
+  color: #000; /* لون الأيقونة عند التمرير أو التركيز */
+}
+
+
+main {
+    padding: 10px;
+    margin-top: 50px; /* تترك مساحة للشريط العلوي */
+    margin-bottom: 7px; /* تترك مساحة للقائمة السفلية */
+}
+
+.profile-container {
+  display: flex;
+  align-items: center;
+  background-color: #f1f1f1;
+  padding: 5px;
+  margin-top: 0px; /* تترك مساحة للشريط العلوي */
+  margin-bottom: 15px; /* تترك مساحة للقائمة السفلية */
+  border-radius: 10px;
+  width: 90%;
+  border: 2px solid red;
+  direction: rtl; /* يسار إلى يمين */
+}
+
+.profile-image {
+  margin-right: 0px;
+}
+
+.profile-image img {
+  width: 100px;
+  height: 100px; border: 2px solid red;
+  border-radius: 50%;
+}
+
+.profile-info h1 {
+  margin-top: 0px; /* تترك مساحة للشريط العلوي */
+    margin-bottom: -10px; /* تترك مساحة للقائمة السفلية */
+  font-size: 20px;
+}
+
+.profile-info p {
+  margin-bottom: 5px;
+  color: #6597e7;
+  font-size: 14px;    
+
+}
+
+.profile-container:hover {
+  background-color: #0056b3;
+}
+    
+    #searchbar {
+    margin: 10px;direction: rtl;
+    padding: 10px; 
+    font-size: 19px;
+    font-weight: bold;
+    border-radius: 5px;
+    width: 70%;
+    height: 35px; 
+     margin-top: 10px; /* تترك مساحة للشريط العلوي */
+    margin-bottom: 0px; /
+    border: 2px solid gold;
+    box-sizing: border-box;
+}  
+#playlist-track-ctn {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.animals {
+    padding: 10px;
+    border: 1px solid #666;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+#searchbar {
+    display: none;
+    margin-left: 10px;
+}
+
+#searchbar.show {
+    display: inline-block;
+}
+
+#searchbar:focus,#searchbar:hover {
+         background: #ccc; /* لون	 خلفية الزر */
+         color: #000 ;
+          border-radius: 5px;
+          outline: none; /* إزالة تأثير الـ focus الافتراضي */
+             border: 2px solid #ff0066;   
+        }
+
+
+
+.animals:last-child {
+    border-bottom: none;
+    color: red;
+    font-weight: bold;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+  .playlist-track-ctn.hidden {
+    display: none !important;
+  } 
+</style>
+                 
+          <!-- Top navigation -->
+            <div class="topnav">
+                <!-- ISIM TATBI9 -->
+                <div class="topnav-centered">
+                 <a><h5>أبو بكر الشاطري</h5> </a>
+                </div>
+                <!-- ISIM TATBI9 -->
+
+                <!-- ZIR ROJO3 -->
+<a href="go:afmv "><i  class="fa fa-reply "style="font-size: 20px;"></i>
+                </a>
+                <!-- ZIR ROJO3 -->
+
+ <a ><i class="fa-solid fa-book-quran"></i></a>
+                <!-- ZIR LBAHT-search -->
+                
+                
+                <div class="topnav-right">
+<a tabindex="1" href="javascript:void(0)" onclick="toggleSearchBar()">
+    <i class="fa fa-search"></i>
+</a>
+                    <!-- ZIR LBAHT-search -->
+
+                </div></div>   
+
+ <audio id="myAudio" ontimeupdate="onTimeUpdate()">
+    <source id="source-audio" src="https://listen.ourquraan.com/Abu_Baker_Shatri/001.mp3" type="audio/mpeg">
+    المتصفح الخاص بك لا يدعم عنصر الصوت.
+  </audio>
+  
+  
+  <main>
+  <div align="center" >
+  <a  href="javascript:void(0)"><input id="searchbar" 
+       onkeyup="search_animal()" 
+       type="text" 
+       name="search" 
+       placeholder=" ابحث عن سورة --او رقم سورة..." 
+       tabindex="1"></a></div >
+       
+  <div class="player-ctn">
+    <div class="music-info">
+      <img  src="https://i.imgur.com/ldiBgPN.jpg" alt="Cover Image" id="cover-image">
+         <div class="track-info">
+        <h2 class="title" id="track-title">سورة الفاتحة</h2>
+        <center><span class="artist" id="track-artist">الشيخ أبو بكر الشاطري</span></center>
+        <h5 class="title1">حفص عن عاصم</h5>
+      </div>
+    </div>
+      
+    <div class="infos-ctn">
+      <div class="timer">00:00</div>
+      <div id="myProgress">
+        <div id="myBar"></div>
+      </div>
+      <div class="duration">01:00</div>
+    </div>
+    
+    <div align="center" >
+    
+    <div class="btn-ctn">
+      <div class="btn-action first-btn"id="remot" tabindex="1" onclick="previous()">
+        <div id="btn-faws-back">
+          <i class='fas fa-step-backward'></i>
+        </div>
+      </div>
+      <div class="btn-action"id="remot" tabindex="1" onclick="rewind()">
+        <div id="btn-faws-rewind">
+          <i class='fas fa-backward'></i>
+        </div>
+      </div>
+      <div class="btn-action"id="remot" tabindex="1" onclick="toggleAudio()">
+        <div id="btn-faws-play-pause">
+          <i class='fas fa-play' id="icon-play"></i>
+          <i class='fas fa-pause' id="icon-pause" style="display: none"></i>
+        </div>
+      </div>
+      <div class="btn-play"id="remot" tabindex="1" onclick="forward()">
+        <div id="btn-faws-forward">
+          <i class='fas fa-forward'></i>
+        </div>
+      </div>
+      <div class="btn-action"id="remot" tabindex="1" onclick="next()">
+        <div id="btn-faws-next">
+          <i class='fas fa-step-forward'></i>
+        </div>
+      </div>
+      <div class="btn-mute"id="remot" tabindex="1" id="toggleMute" onclick="toggleMute()">
+        <div id="btn-faws-volume">
+          <i id="icon-vol-up" class='fas fa-volume-up'></i>
+          <i id="icon-vol-mute" class='fas fa-volume-mute' style="display: none"></i>
+        </div>
+      </div>
+    </div>
+    <div class="playlist-ctn"tabindex="1"></div>
+  </div>
+    </div>
+      </main>
+      <div align="center" >
+<div class="profile-container">
+  <div class="profile-image">
+    <img src="https://i.imgur.com/Zeo8fdG.jpg" alt="الشيخ سعود الغامدي">
+  </div>
+  <div class="profile-info">
+    <h1>أبو بكر الشاطري</h1>
+<p>شيخ بن أبي بكر الشاطري قارئ من اليمن، وقد ولد شيخ أبو بكر الشاطري سنة 1970 بمدينة جدة.
+شيخ أبو بكر الشاطري حاصل على إجازة في تلاوة القرآن الكريم برواية حفص عن عاصم على يد أيمن سويد سنة 1416هــ. ويتوفر القارئ على العديد من الإصدارات القرآنية نعرضها لكم في صفحته.
+يعمل القارئ إماما بأحد مساجد مدينة جدة.
+</p>
+  
+  </div>
+</div>      
+ </div>       
+<script>
+function createTrackItem(index,name,duration){
+    var trackItem = document.createElement('div');
+    trackItem.setAttribute("class", "playlist-track-ctn");trackItem.setAttribute("tabindex", index);
+    trackItem.setAttribute("id", "ptc-"+index);
+    trackItem.setAttribute("data-index", index);
+    document.querySelector(".playlist-ctn").appendChild(trackItem);
+
+    var playBtnItem = document.createElement('div');
+    playBtnItem.setAttribute("class", "playlist-btn-play");
+    playBtnItem.setAttribute("id", "pbp-"+index);
+    document.querySelector("#ptc-"+index).appendChild(playBtnItem);
+
+    var btnImg = document.createElement('i');
+    btnImg.setAttribute("class", "fas fa-play");
+    btnImg.setAttribute("height", "40");
+    btnImg.setAttribute("width", "40");
+    btnImg.setAttribute("id", "p-img-"+index);
+    document.querySelector("#pbp-"+index).appendChild(btnImg);
+
+    var trackInfoItem = document.createElement('div');
+    trackInfoItem.setAttribute("class", "class","playlist-info-track");
+    trackInfoItem.innerHTML = name
+    document.querySelector("#ptc-"+index).appendChild(trackInfoItem);
+
+    var trackDurationItem = document.createElement('div');
+    trackDurationItem.setAttribute("class", "playlist-duration");
+    trackDurationItem.innerHTML = duration
+    document.querySelector("#ptc-"+index).appendChild(trackDurationItem);
+  }
+
+  var listAudio = [
+    {
+  name: "سورة الفاتحة ",
+  file: "https://listen.ourquraan.com/Abu_Baker_Shatri/001.mp3",
+  duration: "01",
+},
+        {
+  name: "سورة البقرة",
+  file: "https://listen.ourquraan.com/Abu_Baker_Shatri/002.mp3",
+  duration: "02",
+},
+    {
+  name: "سورة آل عمران",
+  file: "https://listen.ourquraan.com/Abu_Baker_Shatri/003.mp3",
+  duration: "03",
+},
+           {
+  name: "سورة النساء ",
+  file: "https://listen.ourquraan.com/Abu_Baker_Shatri/004.mp3",
+  duration: "04",
+},
+       {
+        name: "سورة المائدة",
+  file: "https://listen.ourquraan.com/Abu_Baker_Shatri/005.mp3",
+  duration: "05",
+},
+       {
+      name:"سورة الأنعام",
+      file:"https://listen.ourquraan.com/Abu_Baker_Shatri/006.mp3",
+      duration:"06"
+    },
+       {
+      name:"سورة الأعراف",
+      file:"https://listen.ourquraan.com/Abu_Baker_Shatri/007.mp3",
+      duration:"07"
+    },
+    {
+      name:"سورة الأنفال",
+      file:"https://listen.ourquraan.com/Abu_Baker_Shatri/008.mp3",
+      duration:"08"
+    },
+    
+      {
+      name:"سورة التوبة",
+      file:"https://listen.ourquraan.com/Abu_Baker_Shatri/009.mp3",
+      duration:"09"
+    },
+       {
+      name:"سورة يونس",
+      file:"https://listen.ourquraan.com/Abu_Baker_Shatri/010.mp3",
+      duration:"10"
+    },
+            {
+      name:"سورة هود",
+      file:"https://listen.ourquraan.com/Abu_Baker_Shatri/011.mp3",
+      duration:"11"
+    },
+    {
+      name:"سورة يوسف",
+      file:"https://listen.ourquraan.com/Abu_Baker_Shatri/012.mp3",
+      duration:"12"
+    },
+    
+      {
+      name:"سورة الرعد",
+      file:"https://listen.ourquraan.com/Abu_Baker_Shatri/013.mp3",
+      duration:"13"
+    },
+       {
+      name:"سورة إبراهيم",
+      file:"https://listen.ourquraan.com/Abu_Baker_Shatri/014.mp3",
+      duration:"14"
+    },
+       {
+      name:"سورة الحجر",
+      file:"https://listen.ourquraan.com/Abu_Baker_Shatri/015.mp3",
+      duration:"15"
+    },
+      {
+      name:"سورة النحل",
+      file:"https://listen.ourquraan.com/Abu_Baker_Shatri/016.mp3",
+      duration:"16"
+    },
+      {
+      name:"سورة الإسراء",  file:"https://listen.ourquraan.com/Abu_Baker_Shatri/017.mp3",
+      duration:"17"
+    },
+       {
+      name:"سورة الكهف",
+      file:"https://listen.ourquraan.com/Abu_Baker_Shatri/018.mp3",
+      duration:"18"
+    },
+       {
+      name:"سورة مريم",
+      file:"https://listen.ourquraan.com/Abu_Baker_Shatri/019.mp3",
+      duration:"19"
+    },
+       {
+      name:"سورة طه",
+      file:"https://listen.ourquraan.com/Abu_Baker_Shatri/020.mp3",
+      duration:"20"
+    }
+    ,
+          {
+      name:"سورة الأنبياء",
+      file:"https://listen.ourquraan.com/Abu_Baker_Shatri/021.mp3",
+      duration:"21"
+    },
+      {
+      name:"سورة الحج",
+      file:"https://listen.ourquraan.com/Abu_Baker_Shatri/022.mp3",
+      duration:"22"
+    },
+       {
+      name:"سورة المؤمنون",
+      file:"https://listen.ourquraan.com/Abu_Baker_Shatri/023.mp3",
+      duration:"23"
+    },
+       {
+      name:"سورة النور",
+      file:"https://listen.ourquraan.com/Abu_Baker_Shatri/024.mp3",
+      duration:"24"
+    },
+       {
+      name:"سورة الفرقان",
+      file:"https://listen.ourquraan.com/Abu_Baker_Shatri/025.mp3",
+      duration:"25"
+    }
+    ,
+         {
+      name:"سورة الشعراء",
+      file:"https://listen.ourquraan.com/Abu_Baker_Shatri/026.mp3",
+      duration:"26"
+    },
+        {
+      name:"سورة النمل",
+      file:"https://listen.ourquraan.com/Abu_Baker_Shatri/027.mp3",
+      duration:"27"
+    },
+          {
+      name:"سورة القصص",
+      file:"https://listen.ourquraan.com/Abu_Baker_Shatri/028.mp3",
+      duration:"28"
+    },
+        {
+      name:"سورة العنكبوت",
+      file:"https://listen.ourquraan.com/Abu_Baker_Shatri/029.mp3",
+      duration:"29"
+    },
+          {
+      name:"سورة الروم",
+      file:"https://listen.ourquraan.com/Abu_Baker_Shatri/030.mp3",
+      duration:"30"
+    },
+        {
+      name:"سورة لقمان",
+      file:"https://listen.ourquraan.com/Abu_Baker_Shatri/031.mp3",
+      duration:"31"
+    }
+    ,
+             {
+      name:"سورة السجدة",
+      file:"https://listen.ourquraan.com/Abu_Baker_Shatri/032.mp3",
+      duration:"32"
+    },
+        {
+      name:"سورة الأحزاب",
+      file:"https://listen.ourquraan.com/Abu_Baker_Shatri/033.mp3",
+      duration:"33"
+    },
+          {
+      name:"سورة سبأ",
+      file:"https://listen.ourquraan.com/Abu_Baker_Shatri/034.mp3",
+      duration:"34"
+    },
+        {
+      name:"سورة فاطر",
+      file:"https://listen.ourquraan.com/Abu_Baker_Shatri/035.mp3",
+      duration:"35"
+    },
+          {
+      name:"سورة يس",
+      file:"https://listen.ourquraan.com/Abu_Baker_Shatri/036.mp3",
+      duration:"36"
+    },
+        {
+      name:"سورة الصافات",
+      file:"https://listen.ourquraan.com/Abu_Baker_Shatri/037.mp3",
+      duration:"37"
+    },
+             {
+      name:"سورة ص",
+      file:"https://listen.ourquraan.com/Abu_Baker_Shatri/038.mp3",
+      duration:"38"
+    },
+        {
+      name:"سورة الزمر",
+      file:"https://listen.ourquraan.com/Abu_Baker_Shatri/039.mp3",
+      duration:"39"
+    },
+          {
+      name:"سورة غافر",
+      file:"https://listen.ourquraan.com/Abu_Baker_Shatri/040.mp3",
+      duration:"40"
+    },
+        {
+      name:"سورة فصّلت",
+      file:"https://listen.ourquraan.com/Abu_Baker_Shatri/041.mp3",
+      duration:"41"
+    },
+          {
+      name:"سورة الشورى",
+      file:"https://listen.ourquraan.com/Abu_Baker_Shatri/042.mp3",
+      duration:"42"
+    },
+        {
+      name:"سورة الزخرف",
+      file:"https://listen.ourquraan.com/Abu_Baker_Shatri/043.mp3",
+      duration:"43"
+    }
+    ,
+             {
+      name:"سورة الدّخان",
+      file:"https://listen.ourquraan.com/Abu_Baker_Shatri/044.mp3",
+      duration:"44"
+    },
+        {
+      name:"سورة الجاثية",
+      file:"https://listen.ourquraan.com/Abu_Baker_Shatri/045.mp3",
+      duration:"45"
+    },
+          {
+      name:"سورة الأحقاف",
+      file:"https://listen.ourquraan.com/Abu_Baker_Shatri/046.mp3",
+      duration:"46"
+    },
+        {
+      name:"سورة محمد",
+      file:"https://listen.ourquraan.com/Abu_Baker_Shatri/047.mp3",
+      duration:"47"
+    },
+          {
+      name:"سورة الفتح",
+      file:"https://listen.ourquraan.com/Abu_Baker_Shatri/048.mp3",
+      duration:"48"
+    },
+        {
+      name:"سورة الحجرات",
+      file:"https://listen.ourquraan.com/Abu_Baker_Shatri/049.mp3",
+      duration:"49"
+    },
+              {
+      name:"سورة ق",
+      file:"https://listen.ourquraan.com/Abu_Baker_Shatri/050.mp3",
+      duration:"50"
+    },
+        {
+      name:"سورة الذاريات",
+      file:"https://listen.ourquraan.com/Abu_Baker_Shatri/051.mp3",
+      duration:"51"
+    }
+    ,
+             {
+      name:"سورة الطور",
+      file:"https://listen.ourquraan.com/Abu_Baker_Shatri/052.mp3",
+      duration:"52"
+    },
+        {
+      name:"سورة النجم",
+      file:"https://listen.ourquraan.com/Abu_Baker_Shatri/053.mp3",
+      duration:"53"
+    },
+          {
+      name:"سورة القمر",
+      file:"https://listen.ourquraan.com/Abu_Baker_Shatri/054.mp3",
+      duration:"54"
+    },
+        {
+      name:"سورة الرحمن",
+      file:"https://listen.ourquraan.com/Abu_Baker_Shatri/055.mp3",
+      duration:"55"
+    },
+          {
+      name:"سورة الواقعة",
+      file:"https://listen.ourquraan.com/Abu_Baker_Shatri/056.mp3",
+      duration:"56"
+    },
+        {
+      name:"سورة الحديد",
+      file:"https://listen.ourquraan.com/Abu_Baker_Shatri/057.mp3",
+      duration:"57"
+    },
+     {
+      name:"سورة المجادلة",
+      file:"https://listen.ourquraan.com/Abu_Baker_Shatri/058.mp3",
+      duration:"58"
+    },
+          {
+      name:"سورة الحشر",
+      file:"https://listen.ourquraan.com/Abu_Baker_Shatri/059.mp3",
+      duration:"59"
+    },
+        {
+      name:"سورة الممتحنة",
+      file:"https://listen.ourquraan.com/Abu_Baker_Shatri/060.mp3",
+      duration:"60"
+    },
+     {
+      name:"سورة الصف",
+      file:"https://listen.ourquraan.com/Abu_Baker_Shatri/061.mp3",
+      duration:"61"
+    },
+          {
+      name:"سورة الجمعة",
+      file:"https://listen.ourquraan.com/Abu_Baker_Shatri/062.mp3",
+      duration:"62"
+    },
+        {
+      name:"سورة المنافقون",
+      file:"https://listen.ourquraan.com/Abu_Baker_Shatri/063.mp3",
+      duration:"63"
+    },
+        {
+      name:"سورة التغابن",
+      file:"https://listen.ourquraan.com/Abu_Baker_Shatri/064.mp3",
+      duration:"64"
+    },
+          {
+      name:"سورة الطلاق",
+      file:"https://listen.ourquraan.com/Abu_Baker_Shatri/065.mp3",
+      duration:"65"
+    },
+        {
+      name:"سورة التحريم",
+      file:"https://listen.ourquraan.com/Abu_Baker_Shatri/066.mp3",
+      duration:"66"
+    },
+        {
+      name:"سورة الملك",
+      file:"https://listen.ourquraan.com/Abu_Baker_Shatri/067.mp3",
+      duration:"67"
+    },
+          {
+      name:"سورة القلم",
+      file:"https://listen.ourquraan.com/Abu_Baker_Shatri/068.mp3",
+      duration:"68"
+    },
+        {
+      name:"سورة الحاقة",
+      file:"https://listen.ourquraan.com/Abu_Baker_Shatri/069.mp3",
+      duration:"69"
+    },
+        {
+      name:"سورة المعارج",
+      file:"https://listen.ourquraan.com/Abu_Baker_Shatri/070.mp3",
+      duration:"70"
+    },
+          {
+      name:"سورة نوح",
+      file:"https://listen.ourquraan.com/Abu_Baker_Shatri/071.mp3",
+      duration:"71"
+    },
+        {
+      name:"سورة الجن",
+      file:"https://listen.ourquraan.com/Abu_Baker_Shatri/072.mp3",
+      duration:"72"
+    },
+    {
+      name:"سورة المزّمّل",
+      file:"https://listen.ourquraan.com/Abu_Baker_Shatri/073.mp3",
+      duration:"73"
+    },
+        {
+      name:"سورة المدّثر",
+      file:"https://listen.ourquraan.com/Abu_Baker_Shatri/074.mp3",
+      duration:"74"
+    },
+          {
+      name:"سورة القيامة",
+      file:"https://listen.ourquraan.com/Abu_Baker_Shatri/075.mp3",
+      duration:"75"
+    },
+        {
+      name:"سورة الإنسان",
+      file:"https://listen.ourquraan.com/Abu_Baker_Shatri/076.mp3",
+      duration:"76"
+    },
+    {
+      name:"سورة المرسلات",
+      file:"https://listen.ourquraan.com/Abu_Baker_Shatri/077.mp3",
+      duration:"77"
+    },
+        {
+      name:"سورة النبأ",
+      file:"https://listen.ourquraan.com/Abu_Baker_Shatri/078.mp3",
+      duration:"78"
+    },
+          {
+      name:"سورة النازعات",
+      file:"https://listen.ourquraan.com/Abu_Baker_Shatri/079.mp3",
+      duration:"79"
+    },
+        {
+      name:"سورة عبس",
+      file:"https://listen.ourquraan.com/Abu_Baker_Shatri/080.mp3",
+      duration:"80"
+    },
+    {
+      name:"سورة التكوير",
+      file:"https://listen.ourquraan.com/Abu_Baker_Shatri/081.mp3",
+      duration:"81"
+    },
+        {
+      name:"سورة الإنفطار",
+      file:"https://listen.ourquraan.com/Abu_Baker_Shatri/082.mp3",
+      duration:"82"
+    },
+          {
+      name:"سورة المطفّفين",
+      file:"https://listen.ourquraan.com/Abu_Baker_Shatri/083.mp3",
+      duration:"83"
+    },
+        {
+      name:"سورة الإنشقاق",
+      file:"https://listen.ourquraan.com/Abu_Baker_Shatri/084.mp3",
+      duration:"84"
+    },
+        {
+      name:"سورة البروج",
+      file:"https://listen.ourquraan.com/Abu_Baker_Shatri/085.mp3",
+      duration:"85"
+    },
+    {
+      name:"سورة الطارق",
+     file:"https://listen.ourquraan.com/Abu_Baker_Shatri/086.mp3",
+      duration:"86"
+    },
+        {
+      name:"سورة الأعلى",
+      file:"https://listen.ourquraan.com/Abu_Baker_Shatri/087.mp3",
+      duration:"87"
+    },
+          {
+      name:"سورة الغاشية",  file:"https://listen.ourquraan.com/Abu_Baker_Shatri/088.mp3",
+      duration:"88"
+    },
+        {
+      name:"سورة الفجر", file:"https://listen.ourquraan.com/Abu_Baker_Shatri/089.mp3",
+      duration:"89"
+    },
+        {
+      name:"سورة البلد",  file:"https://listen.ourquraan.com/Abu_Baker_Shatri/090.mp3",
+      duration:"90"
+    },
+    {
+      name:"سورة الشمس",  file:"https://listen.ourquraan.com/Abu_Baker_Shatri/091.mp3",
+      duration:"91"
+    },
+        {
+      name:"سورة الليل",
+file:"https://listen.ourquraan.com/Abu_Baker_Shatri/092.mp3",
+      duration:"92"
+    },
+          {
+      name:"سورة الضحى",  file:"https://listen.ourquraan.com/Abu_Baker_Shatri/093.mp3",
+      duration:"93"
+    },
+        {
+      name:"سورة الشرح",  file:"https://listen.ourquraan.com/Abu_Baker_Shatri/094.mp3",
+      duration:"94"
+    },
+        {
+      name:"سورة التين",  file:"https://listen.ourquraan.com/Abu_Baker_Shatri/095.mp3",
+      duration:"95"
+    },
+        {
+      name:"سورة العلق",
+file:"https://listen.ourquraan.com/Abu_Baker_Shatri/096.mp3",
+      duration:"96"
+    },
+          {
+      name:"سورة القدر",  file:"https://listen.ourquraan.com/Abu_Baker_Shatri/026.mp3",
+      duration:"97"
+    },
+        {
+      name:"سورة البينة",  file:"https://listen.ourquraan.com/Abu_Baker_Shatri/098.mp3",
+      duration:"98"
+    },
+        {
+      name:"سورة الزلزلة",
+      file:"https://listen.ourquraan.com/Abu_Baker_Shatri/099.mp3",
+      duration:"99"
+    },
+        {
+      name:"سورة العاديات",
+file:"https://listen.ourquraan.com/Abu_Baker_Shatri/100.mp3",
+      duration:"100"
+    },
+          {
+      name:"سورة القارعة",  file:"https://listen.ourquraan.com/Abu_Baker_Shatri/101.mp3",
+      duration:"101"
+    },
+        {
+      name:"سورة التكاثر",  file:"https://listen.ourquraan.com/Abu_Baker_Shatri/102.mp3",
+      duration:"102"
+    },
+          {
+      name:"سورة العصر",  file:"https://listen.ourquraan.com/Abu_Baker_Shatri/103.mp3",
+      duration:"103"
+    },
+        {
+      name:"سورة الهمزة",  file:"https://listen.ourquraan.com/Abu_Baker_Shatri/104.mp3",
+      duration:"104"
+    },
+          {
+      name:"سورة الفيل",  file:"https://listen.ourquraan.com/Abu_Baker_Shatri/105.mp3",
+      duration:"105"
+    },
+        {
+      name:"سورة قريش",  file:"https://listen.ourquraan.com/Abu_Baker_Shatri/106.mp3",
+      duration:"106"
+    },
+        {
+      name:"سورة الماعون",  file:"https://listen.ourquraan.com/Abu_Baker_Shatri/107.mp3",
+      duration:"107"
+    },
+          {
+      name:"سورة الكوثر",  file:"https://listen.ourquraan.com/Abu_Baker_Shatri/108.mp3",
+      duration:"108"
+    },
+        {
+      name:"سورة الكافرون",  file:"https://listen.ourquraan.com/Abu_Baker_Shatri/109.mp3",
+      duration:"109"
+    },
+        {
+      name:"سورة النصر",  file:"https://listen.ourquraan.com/Abu_Baker_Shatri/110.mp3",    duration:"110"
+    },
+        {
+      name:"سورة المسد",  file:"https://listen.ourquraan.com/Abu_Baker_Shatri/111.mp3",    duration:"111"
+    },
+        {
+      name:"سورة الإخلاص",  file:"https://listen.ourquraan.com/Abu_Baker_Shatri/112.mp3",    duration:"112"
+    },
+        {
+      name:"سورة الفلق",  file:"https://listen.ourquraan.com/Abu_Baker_Shatri/113.mp3",    duration:"113"
+    },
+        {
+      name:"سورة النّاس",  file:"https://listen.ourquraan.com/Abu_Baker_Shatri/114.mp3",    duration:"114"
+    }
+  ]
+
+  for (var i = 0; i < listAudio.length; i++) {
+      createTrackItem(i,listAudio[i].name,listAudio[i].duration);
+  }
+  var indexAudio = 0;
+
+  function loadNewTrack(index){
+    var player = document.querySelector('#source-audio')
+    player.src = listAudio[index].file
+    document.querySelector('.title').innerHTML = listAudio[index].name
+    this.currentAudio = document.getElementById("myAudio");
+    this.currentAudio.load()
+    this.toggleAudio()
+    this.updateStylePlaylist(this.indexAudio,index)
+    this.indexAudio = index;
+  }
+
+  var playListItems = document.querySelectorAll(".playlist-track-ctn");
+
+  for (let i = 0; i < playListItems.length; i++){
+    playListItems[i].addEventListener("click", getClickedElement.bind(this));
+  }
+
+  function getClickedElement(event) {
+    for (let i = 0; i < playListItems.length; i++){
+      if(playListItems[i] == event.target){
+        var clickedIndex = event.target.getAttribute("data-index")
+        if (clickedIndex == this.indexAudio ) { // alert('Same audio');
+            this.toggleAudio()
+        }else{
+            loadNewTrack(clickedIndex);
+        }
+      }
+    }
+  }
+
+  document.querySelector('#source-audio').src = listAudio[indexAudio].file
+  document.querySelector('.title').innerHTML = listAudio[indexAudio].name
+
+
+  var currentAudio = document.getElementById("myAudio");
+
+  currentAudio.load()
+  
+  currentAudio.onloadedmetadata = function() {
+        document.getElementsByClassName('duration')[0].innerHTML = this.getMinutes(this.currentAudio.duration)
+  }.bind(this);
+
+  var interval1;
+
+  function toggleAudio() {
+
+    if (this.currentAudio.paused) {
+      document.querySelector('#icon-play').style.display = 'none';
+      document.querySelector('#icon-pause').style.display = 'block';
+      document.querySelector('#ptc-'+this.indexAudio).classList.add("active-track");
+      this.playToPause(this.indexAudio)
+      this.currentAudio.play();
+    }else{
+      document.querySelector('#icon-play').style.display = 'block';
+      document.querySelector('#icon-pause').style.display = 'none';
+      this.pauseToPlay(this.indexAudio)
+      this.currentAudio.pause();
+    }
+  }
+
+  function pauseAudio() {
+    this.currentAudio.pause();
+    clearInterval(interval1);
+  }
+
+  var timer = document.getElementsByClassName('timer')[0]
+
+  var barProgress = document.getElementById("myBar");
+
+
+  var width = 0;
+
+  function onTimeUpdate() {
+    var t = this.currentAudio.currentTime
+    timer.innerHTML = this.getMinutes(t);
+    this.setBarProgress();
+    if (this.currentAudio.ended) {
+      document.querySelector('#icon-play').style.display = 'block';
+      document.querySelector('#icon-pause').style.display = 'none';
+      this.pauseToPlay(this.indexAudio)
+      if (this.indexAudio < listAudio.length-1) {
+          var index = parseInt(this.indexAudio)+1
+          this.loadNewTrack(index)
+      }
+    }
+  }
+
+
+  function setBarProgress(){
+    var progress = (this.currentAudio.currentTime/this.currentAudio.duration)*100;
+    document.getElementById("myBar").style.width = progress + "%";
+  }
+
+
+  function getMinutes(t){
+    var min = parseInt(parseInt(t)/60);
+    var sec = parseInt(t%60);
+    if (sec < 10) {
+      sec = "0"+sec
+    }
+    if (min < 10) {
+      min = "0"+min
+    }
+    return min+":"+sec
+  }
+
+  var progressbar = document.querySelector('#myProgress')
+  progressbar.addEventListener("click", seek.bind(this));
+
+
+  function seek(event) {
+    var percent = event.offsetX / progressbar.offsetWidth;
+    this.currentAudio.currentTime = percent * this.currentAudio.duration;
+    barProgress.style.width = percent*100 + "%";
+  }
+
+  function forward(){
+    this.currentAudio.currentTime = this.currentAudio.currentTime + 5
+    this.setBarProgress();
+  }
+
+  function rewind(){
+    this.currentAudio.currentTime = this.currentAudio.currentTime - 5
+    this.setBarProgress();
+  }
+
+
+  function next(){
+    if (this.indexAudio <listAudio.length-1) {
+        var oldIndex = this.indexAudio
+        this.indexAudio++;
+        updateStylePlaylist(oldIndex,this.indexAudio)
+        this.loadNewTrack(this.indexAudio);
+    }
+  }
+
+  function previous(){
+    if (this.indexAudio>0) {
+        var oldIndex = this.indexAudio
+        this.indexAudio--;
+        updateStylePlaylist(oldIndex,this.indexAudio)
+        this.loadNewTrack(this.indexAudio);
+    }
+  }
+
+  function updateStylePlaylist(oldIndex,newIndex){
+    document.querySelector('#ptc-'+oldIndex).classList.remove("active-track");
+    this.pauseToPlay(oldIndex);
+    document.querySelector('#ptc-'+newIndex).classList.add("active-track");
+    this.playToPause(newIndex)
+  }
+
+  function playToPause(index){
+    var ele = document.querySelector('#p-img-'+index)
+    ele.classList.remove("fa-play");
+    ele.classList.add("fa-pause");
+  }
+
+  function pauseToPlay(index){
+    var ele = document.querySelector('#p-img-'+index)
+    ele.classList.remove("fa-pause");
+    ele.classList.add("fa-play");
+  }
+
+
+  function toggleMute(){
+    var btnMute = document.querySelector('#toggleMute');
+    var volUp = document.querySelector('#icon-vol-up');
+    var volMute = document.querySelector('#icon-vol-mute');
+    if (this.currentAudio.muted == false) {
+       this.currentAudio.muted = true
+       volUp.style.display = "none"
+       volMute.style.display = "block"
+    }else{
+      this.currentAudio.muted = false
+      volMute.style.display = "none"
+      volUp.style.display = "block"
+    }
+  }
+  </script>
+
+<script>
+
+    // تأكد من تعيين بيانات جلسة الوسائط إذا تم الدعم
+    if ("mediaSession" in navigator) {
+      navigator.mediaSession.metadata = new MediaMetadata({
+        title: "سورة الفاتحة",
+        artist: "الشيخ أبو بكر الشاطري",
+        album: "حفص عن عاصم",
+        artwork: [
+          { src: "https://i.imgur.com/ldiBgPN.jpg", sizes: "512x512", type: "image/jpeg" }
+        ]
+      });
+
+      navigator.mediaSession.setActionHandler('play', function() {
+        // أضف منطق تشغيل الصوت الخاص بك هنا
+        document.getElementById('audio-player').play();
+      });
+
+      navigator.mediaSession.setActionHandler('pause', function() {
+        // أضف منطق إيقاف الصوت الخاص بك هنا
+        document.getElementById('audio-player').pause();
+      });
+
+      navigator.mediaSession.setActionHandler('previoustrack', function() {
+        // أضف منطق المسار السابق الخاص بك هنا
+      });
+
+      navigator.mediaSession.setActionHandler('nexttrack', function() {
+        // أضف منطق المسار التالي الخاص بك هنا
+      });
+    }
+  </script>
+
+
+<script>
+// Définir la fonction toggleSearchBar
+function toggleSearchBar() {
+    let searchbar = document.getElementById('searchbar');
+    searchbar.classList.toggle('show');
+    searchbar.focus();  // Mettre le focus sur la barre de recherche lorsqu'elle est affichée
+}
+
+// Ajouter un écouteur d'événement de clic sur chaque icône de recherche
+document.querySelectorAll('a i.fa-search').forEach(function(element) {
+    element.addEventListener('click', toggleSearchBar);
+});
+
+// Définir la fonction search_animal pour filtrer les boutons
+function search_animal() {
+    let input = document.getElementById('searchbar').value.trim().toLowerCase();
+    let buttons = document.querySelectorAll('.playlist-track-ctn');
+
+    buttons.forEach(button => {
+        let buttonText = button.textContent.toLowerCase();
+        if (buttonText.includes(input)) {
+            button.classList.remove('hidden');
+        } else {
+            button.classList.add('hidden');
+        }
+    });
+}
+
+function searchAnimals() {
+  // Add your search functionality here
+  console.log('Searching for animals...');
+}
+
+document.addEventListener('keydown', function(event) {
+  // Check if the user pressed the 8/58 button on the remote control
+  if (event.key === '8' && event.key === '58') {
+    searchAnimals();
+  }
+});
+
+
+
+</script>
+
+
+  </body>
+</html>
